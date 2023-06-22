@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kamogelo Mosia</title>
+    <link rel="icon" type="" href="/./1.psd">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Mobile-specific meta tags -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <style>
+        body{
+            background-image: url(bg-r.png);
+    background-position: top left;
+    background-size: cover;
+    background-repeat: no-repeat;
+        }
+    </style>
+
+    <script>
+// Function to check the device size and orientation
+function checkDeviceSizeAndOrientation() {
+  // Check if the device width is less than or equal to 768 pixels (considered as mobile)
+  if (window.innerWidth <= 768) {
+// Redirect to mobile page
+  } else {
+    window.location.href = "desktop.html"; // Redirect to desktop page
+  }
+}
+
+// Call the function when the page loads
+window.addEventListener("load", checkDeviceSizeAndOrientation);
+
+// Call the function again when the device is rotated (orientation change)
+window.addEventListener("orientationchange", checkDeviceSizeAndOrientation);
+
+    </script>
+</head>
+<body>
+    
+
+    <div style="    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   ">
+
+        <div style="    display: flex;
+        padding-top: 2rem;
+        justify-content: center;
+        flex-direction: column;;"><img src="Group 7.png" width="300px" alt=""><img style="padding-top: 4rem;" src="name & title.png" width="400px" alt=""></div>
+
+
+        <div style="padding-top: 1rem; display: flex;justify-content: center;"><a href=""><img style="padding-top: 5rem;"  src="btn.png" width="50px" alt=""></a></div>
+    </div>
+</body>
+</html>

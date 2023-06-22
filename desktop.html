@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamogelo Mosia</title>
+    <link rel="icon" type="" href="/./1.psd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Mobile-specific meta tags -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <style>
+        body{
+            background-image: url(bg-r.png);
+    background-position: top left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+        }
+    </style>
+
+    <script>
+// Function to check the device size and orientation
+function checkDeviceSizeAndOrientation() {
+  // Check if the device width is less than or equal to 768 pixels (considered as mobile)
+  if (window.innerWidth <= 768) {
+    window.location.href = "mobile.html"; // Redirect to mobile page
+  }
+}
+
+// Call the function when the page loads
+window.addEventListener("load", checkDeviceSizeAndOrientation);
+
+// Call the function again when the device is rotated (orientation change) or the view size changes
+window.addEventListener("resize", checkDeviceSizeAndOrientation);
+window.addEventListener("orientationchange", checkDeviceSizeAndOrientation);
+
+    </script>
+</head>
+<body>
+    
+
+    <div style="    margin: auto;
+    display: grid;
+    grid-template-rows: 80% 1fr;
+    align-items: center;
+    height: 100vh;">
+
+        <div style="display: grid;grid-template-columns: 49% 49%;padding: 6rem;"><img src="Group 7.png" width="300px" alt=""><img src="name & title.png" width="300px" alt=""></div>
+
+
+        <div style="padding: 1rem; display: flex;justify-content: center;"><a href=""><img  src="btn.png" width="50px" alt=""></a></div>
+    </div>
+</body>
+</html>
