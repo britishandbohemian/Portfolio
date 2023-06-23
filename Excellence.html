@@ -34,7 +34,7 @@ body{
       if (window.innerWidth <= 768) {
         // Redirect to mobile page
       } else {
-        // window.location.href = "desktop.html"; // Redirect to desktop page
+         window.location.href = "desktop.html"; // Redirect to desktop page
       }
     }
 
@@ -44,6 +44,10 @@ body{
     // Call the function again when the device is rotated (orientation change)
     window.addEventListener("orientationchange", checkDeviceSizeAndOrientation);
 
+
+    function home(){
+      window.location.href = "index.html"; 
+    }
   </script>
 </head>
 
@@ -59,7 +63,7 @@ body{
    " id="plan">
 
 
-<button style=" position: fixed;
+<button onclick="home()" style=" position: fixed;
 left: 76%;
 bottom: 5%;
 border-radius: 50%;
