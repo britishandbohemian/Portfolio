@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kamogelo Mosia</title>
+  <link rel="icon" type="" href="/./1.psd">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Mobile-specific meta tags -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <style>
+    body {
+
+height: 6000px;
+
+    }
+
+   #plan{
+    background-image: url(Artboard\ 2.png);
+    background-position: top left;
+    background-size: contain;
+    background-repeat: no-repeat;
+   }
+
+  </style>
+
+  <script>
+    // Function to check the device size and orientation
+    function checkDeviceSizeAndOrientation() {
+      // Check if the device width is less than or equal to 768 pixels (considered as mobile)
+      if (window.innerWidth <= 768) {
+        // Redirect to mobile page
+      } else {
+        window.location.href = "desktop.html"; // Redirect to desktop page
+      }
+    }
+
+    // Call the function when the page loads
+    window.addEventListener("load", checkDeviceSizeAndOrientation);
+
+    // Call the function again when the device is rotated (orientation change)
+    window.addEventListener("orientationchange", checkDeviceSizeAndOrientation);
+
+  </script>
+</head>
+
+<body>
+
+
+  <div style="    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+   " id="plan">
+
+<div>
+
+
+  </div>
+</body>
+
+</html>
