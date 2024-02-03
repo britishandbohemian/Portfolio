@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>Kamogelo Mosia 2024</title>
   <meta name="author" content="Kamogelo Mosia, Web Developer">
 
   <meta name="geo.region" content="ZA">
@@ -54,9 +55,6 @@
 
 
 
-  <title>Kamogelo Mosia 2024</title>
-
-
   <!-- Favicons -->
   <link href="/assets/img/logo.png" rel="icon">
   <link href="/assets/img/logo.png" rel="apple-touch-icon">
@@ -74,19 +72,70 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+
+  <style>
+    .testimonial-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      /* Set the height to 100% of the parent container */
+    }
+
+    .swiper-slide {
+      height: auto;
+      /* Allow slide to adjust based on content */
+      display: flex;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+      /* Stretch items to fill the container */
+    }
+  </style>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Personal
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const phrases = ["Web Developer", "Designer", "Freelancer", "Blogger"];
+      let currentPhrase = 0;
+      const textElement = document.querySelector('#header h2 span');
+      let deletePhase = false;
+      let txt = '';
+
+      function typeWriter() {
+        let wait = 200;
+        if (deletePhase) {
+          txt = phrases[currentPhrase].substring(0, txt.length - 1);
+        } else {
+          txt = phrases[currentPhrase].substring(0, txt.length + 1);
+        }
+
+        textElement.innerHTML = txt;
+
+        if (!deletePhase && txt === phrases[currentPhrase]) {
+          wait = 2500;
+          deletePhase = true;
+        } else if (deletePhase && txt === '') {
+          deletePhase = false;
+          currentPhrase++;
+          if (currentPhrase >= phrases.length) currentPhrase = 0;
+          wait = 500;
+        }
+
+        setTimeout(typeWriter, wait);
+      }
+
+      typeWriter();
+    });
+
+  </script>
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -110,7 +159,8 @@
       </nav><!-- .navbar -->
 
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/kamogelo-mosia-12b26519a/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/kamogelo-mosia-12b26519a/" class="linkedin"><i
+            class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
@@ -146,7 +196,8 @@
               <ul>
                 <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 September 1998</span></li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                  <span>britishandbohemian.github.io/portfolio</span></li>
+                  <span>britishandbohemian.github.io/portfolio</span>
+                </li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>074 926 5582</span></li>
                 <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Kempton Park, Johannesburg</span>
                 </li>
@@ -157,8 +208,9 @@
                 <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>26</span></li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>BSc Information
                     Techonology</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong>
-                  <span>kamogelomosiah@gmail.com</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                  <span>kamogelomosiah@gmail.com</span>
+                </li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Notice:</strong> <span>Immediately</span></li>
               </ul>
             </div>
@@ -403,9 +455,12 @@
             <div class="testimonial-item">
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Kamogelo Has been creating programs since an ealry age, he has shown exceptional talent in this feild
-                and I would reccomend him to anybody whenit comes to creating software and techonolgy overall
+                "Kamogelo shows exceptional programming skills from a young age. His remarkable talent in software
+                development makes him
+                highly recommendable for tech projects. His dedication and proficiency are key assets in the tech
+                field."
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+
               </p>
               <img src="assets/img/testimonials/testimonials-1.png" class="testimonial-img" alt="">
               <h3>Duduzile Koma</h3>
@@ -417,11 +472,12 @@
             <div class="testimonial-item">
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                hardworking, driven and talented. Not only does he now alot about technolgy but has taught alot of
-                people around him about it aswell, this is a passion that he has had for many years and will continue to
-                be his passion.
+                "Kamogelo is hardworking and talented in technology. He possesses deep knowledge and shares it
+                generously. His passion
+                for technology is inspiring, making him a beacon of knowledge in the ever-evolving tech world."
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
+
               <img src="assets/img/testimonials/testimonials-2.png" class="testimonial-img" alt="">
               <h3>Naiden Oliphant</h3>
               <h4>Junior Debt Collector</h4>
@@ -432,9 +488,9 @@
             <div class="testimonial-item">
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                From Varistiy his always been one to try diffrent thiungs and move outside of the norm, through the
-                years we have known and worked together he has taught me alot and continues to to this day, he is
-                willing to learn and not afraid of a challenge
+                "Kamogelo has always been innovative and eager to learn. Through our years of collaboration, he has been
+                a great teacher
+                and is never afraid to face challenges. His willingness to learn is commendable."
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
               <img src="assets/img/testimonials/testimonials-3.png" class="testimonial-img" alt="">
@@ -467,8 +523,8 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-6">
-          <h3 class="resume-title">Sumary</h3>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3 class="resume-title">Summary</h3>
           <div class="resume-item pb-0">
             <h4>Kamgelo Mosia</h4>
             <p><em>My professional journey is marked not only by a diverse technical skill set but also by personal
@@ -494,12 +550,43 @@
           <div class="resume-item">
             <h4>Bsc Information techonolgy In Computer Science and Informatics</h4>
             <h5>2018 - 2023</h5>
-            <p><em>University Of Johannesburg , Johannesburg , Gauteng</em></p>
-            <p>Studied In the Faculty of science and learned all that a computer science graduate and informatics
-              student would leanr, create a short paragraph describing this for me</p>
+            <p><em>
+
+                <li>
+                  Earned a Bachelor of Science in Information Technology, specializing in Computer Science and
+                  Informatics (2018 - 2023)
+                  from the University of Johannesburg.
+                </li>
+
+
+                <li>
+                  Comprehensive curriculum encompassing both theoretical and practical aspects of computer science and
+                  informatics.
+                </li>
+
+
+                <li>
+                  Emphasis on programming, algorithm design, data structures, and software development.
+                </li>
+
+
+                <li>
+                  Exposure to database management, information systems, and network architecture.
+                  Gained skills in problem-solving, analytical thinking, and technical communication.
+
+                </li>
+
+
+                <li>
+                  Hands-on experience with various programming languages and software tools.
+                  Projects and coursework focused on real-world applications of information technology and computer
+                  science concepts.
+                  Collaborative learning environment with opportunities for research and group projects.
+                </li>
+            </p>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <h3 class="resume-title">Professional Experience</h3>
           <div class="resume-item">
             <h4>Intern Web Developer</h4>
@@ -523,8 +610,24 @@
             <ul>
               <li>Developed Ful Design for an Inventory Management System </li>
               <li>Managed A group Of 3 other students in carrying out the implementation Of This system</li>
-              <li>Consulted with the project sponsor on the direction of the system and what it shoudl entail</li>
+              <li>Consulted with the project sponsor on the direction of the system and what it should entail</li>
               <li>Created 4+ design presentations and proposals three months for client and mentor overseeing project
+              </li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>Backend Development</h4>
+            <h5>July 2023 </h5>
+            <p><em>University Of Johannesburg, Johannesburg, Gauteng</em></p>
+            <p>
+            <ul>
+              <li>Developed the backend for the Inventory Management System </li>
+              <li>Managed A group Of 3 other students in carrying out the implementation Of This system</li>
+              <li>Consulted with the project sponsor on the direction of the system and what it should entail</li>
+              <li>Created an API in C# to handle my inventory management system
+              </li>
+              <li>.Net Mern Stack
               </li>
             </ul>
             </p>
@@ -769,6 +872,7 @@
     </div>
   </section><!-- End Portfolio Section -->
 
+
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container">
@@ -793,7 +897,8 @@
             <i class="bx bx-share-alt"></i>
             <h3>Social Profiles</h3>
             <div class="social-links">
-              <a href="https://www.linkedin.com/in/kamogelo-mosia-12b26519a/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/kamogelo-mosia-12b26519a/" class="linkedin"><i
+                  class="bi bi-linkedin"></i></a>
             </div>
           </div>
         </div>
@@ -802,10 +907,10 @@
           <div class="info-box">
             <i class="bx bx-envelope"></i>
             <h3>Email Me</h3>
-            <p>kamogelomosiah@gmail.com</p>
+            <p> <a href="mailto:kamogelomosiah@gmail.com" style="color: white;">kamogelomosiah@gmail.com</a></p>
           </div>
         </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+        <div class=" col-md-6 mt-4 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-phone-call"></i>
             <h3>Call Me</h3>
@@ -817,13 +922,34 @@
           <div class="info-box">
             <i class="bx bx-phone-call"></i>
             <h3>Download My Resume</h3>
-            <a style="color: white;padding: 1rem;font-size: 0.8em;" href="CV_KMOSIA_2024.pdf">Click here to view Kamogelo's resume</a>
+            <a style="color: white;padding: 1rem;font-size: 0.8em;" href="CV_KMOSIA_2024.pdf">Click here to view
+              Kamogelo's resume</a>
           </div>
         </div>
-
       </div>
 
-
+      <form action="https://formspree.io/f/xgegvage" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+      </form>
 
     </div>
   </section><!-- End Contact Section -->
@@ -839,7 +965,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
