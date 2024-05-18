@@ -856,6 +856,10 @@ section .container {
   margin-right: 0;
 }
 
+.portfolio-wrap img{
+  height: 5rem;
+}
+
 .portfolio .portfolio-wrap {
   transition: 0.3s;
   position: relative;
