@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Careers/static/css/main.f53d0a65.css",
+    "main.js": "/Careers/static/js/main.d89f1d48.js",
+    "static/js/453.ed3810f9.chunk.js": "/Careers/static/js/453.ed3810f9.chunk.js",
+    "static/media/bghero.jpeg": "/Careers/static/media/bghero.caa0cad0224bf54fb5e1.jpeg",
+    "index.html": "/Careers/index.html",
+    "main.f53d0a65.css.map": "/Careers/static/css/main.f53d0a65.css.map",
+    "main.d89f1d48.js.map": "/Careers/static/js/main.d89f1d48.js.map",
+    "453.ed3810f9.chunk.js.map": "/Careers/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f53d0a65.css",
+    "static/js/main.d89f1d48.js"
+  ]
+}

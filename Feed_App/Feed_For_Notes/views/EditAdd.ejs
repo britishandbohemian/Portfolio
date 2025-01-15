@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit</title>
+  <link rel="stylesheet" href="/custom.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <script src="/functions.js"></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bundle.js"></script>
+
+  <style>
+
+    input{
+      color:white;
+    }
+    label {
+      margin: 10px 0px;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    form{
+      width: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="content">
+
+    <section class="navTop">
+      <!-- Navbar-->
+      <div style="margin-bottom: 5rem;">
+        <header>
+          <nav>
+            <button onclick="Home()"><span class="material-symbols-outlined">
+                chevron_left
+              </span></button>
+            <h1 class="logo">Feed</h1>
+          </nav>
+        </header>
+      </div>
+  
+    </section>
+  
+    <!-- main div with cards-->
+    <section
+      style="display: flex;flex-direction: column;justify-content: space-evenly;align-items: center;">
+  
+      <form action="/submitEditAdd" method="post" style="display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+  
+        <!-- Hidden input for ID (if editing an existing item) -->
+        <input type="hidden" name="id" value="<%= viewData ? viewData.id : '' %>">
+        
+        <div style="margin: 10px; display: flex; flex-direction: column; justify-content: space-evenly; width: 100%;">
+          <label for="name">Name:</label>
+          <input style="background-color: black; border: none; height: 28px;" type="text" id="name" name="name" value="<%= viewData ? viewData.name : '' %>" required>
+          <hr style="border: 1px solid black; width: 100%; margin-top: 7px;">
+        </div>
+        <div style="margin: 10px; display: flex; flex-direction: column; justify-content: space-evenly; width: 100%;">
+          <label for="whyImportant">Information:</label>
+          <textarea style="background-color: black; color: white; border: none; height: 20vh; resize: none;" id="whyImportant" name="whyImportant" required><%= viewData ? viewData.whyImportant : '' %></textarea>
+          <hr style="border: 1px solid black; width: 100%; margin-top: 7px;">
+        </div>
+        
+        
+        <button type="submit"
+          style="height: 50px; width: 50px; background-color: black; border-radius: 100%; display: flex; justify-content: center; align-items: center;">
+          <span style="color: white;" class="material-symbols-outlined">
+            check
+          </span>
+        </button>
+      
+      </form>
+      
+  
+    </section>
+  
+
+
+
+
+
+
+
+    
+    
+  </div>
+</body>
+
+
+
+</html>

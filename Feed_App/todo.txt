@@ -1,0 +1,3 @@
+1) Firebase--Create a collection for users and make sure that each user has there own components
+2) App--- When a user logs in load there components
+3) App----Check to see wether the credentials are right then log in if not dont
