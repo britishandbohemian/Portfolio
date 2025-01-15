@@ -64,7 +64,6 @@
 
         /* Phone Frame */
         .phone-frame {
-            width: 180px;
             height: 180px;
             background: #000000;
             border-radius: 40px;
@@ -495,7 +494,7 @@
 
         @media (max-width: 480px) {
             .screen-iframe {
-                transform: scale(0.8); /* Scale even further on very small screens */
+             /* Scale even further on very small screens */
             }
         }
 
@@ -505,6 +504,7 @@
                 grid-template-columns: 1fr;
                 padding: 16px;
                 gap: 16px;
+                width:349px;
             }
 
             .project-card {
@@ -526,7 +526,7 @@
 <main class="main-container">
     <div class="container">
         <section class="section fade-up">
-            <h1 style="text-align:center">Featured Projects</h1>
+            <h1 style="text-align:center;padding:19px;">Featured Projects</h1>
             <div class="projects-grid">
                 <!-- Example of updated card structure - repeat for all cards -->
                 <div class="project-card">
