@@ -7,6 +7,409 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="shared.css">
     <style>
+
+
+
+        /* Grid Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Grid */
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 3rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+                padding: 4rem;
+                gap: 3rem;
+            }
+        }
+
+        /* Project Card */
+        .project-card {
+            background: var(--card-bg, white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Phone Container */
+        .phone-container {
+            width: 100%;
+            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--tag-bg, #f0f4f8);
+        }
+
+        /* Phone Frame */
+        .phone-frame {
+            width: 180px;
+            height: 180px;
+            background: #000000;
+            border-radius: 40px;
+            margin: 0 auto;
+            padding: 8px;
+            position: relative;
+            box-shadow:
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+        }
+
+        /* Phone Screen */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Phone Notch */
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: #000000;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Phone Button */
+        .phone-button {
+            position: absolute;
+            right: -2px;
+            top: 45px;
+            width: 3px;
+            height: 40px;
+            background: #262626;
+            border-radius: 2px;
+        }
+
+        /* Screen Content */
+        .screen-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            overflow: hidden;
+        }
+
+
+
+        /* Project Info */
+        .project-info {
+            text-align: center;
+            width: 100%;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary, #2d3748);
+            margin-bottom: 1rem;
+        }
+
+        /* Tags */
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--tag-bg, #f0f4f8);
+            color: var(--text-primary, #4a5568);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-tag:hover {
+            background: var(--accent-color, #4a90e2);
+            color: white;
+        }
+
+        /* Project Link */
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-color, #4a90e2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: var(--accent-color-dark, #357abd);
+            transform: translateY(-2px);
+        }
+
+        /* Menu Container */
+        .menu-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: var(--card-bg, white);
+            padding: 12px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 3rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+                padding: 4rem;
+                gap: 3rem;
+            }
+        }
+
+        .project-card {
+            background: var(--card-bg, white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .phone-container {
+            height:320px;
+            width: 100%;
+            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--tag-bg, #f0f4f8);
+        }
+        /* Phone Frame */
+        .phone-frame {
+            width: 100%; /* Make the phone frame take full width */
+            height: 100%; /* Make the phone frame take full height */
+            background: #000000;
+            border-radius: 40px;
+            margin: 0 auto;
+            padding: 8px;
+            position: relative;
+            box-shadow:
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+        }
+
+        /* Phone Screen */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Screen iframe */
+        .screen-iframe {
+            width: 100%; /* Take full width of its container */
+            height: 100%; /* Take full height of its container */
+            border: none;
+            transform-origin: top center;
+            overflow: hidden !important; /* Prevent overflow */
+        }
+
+
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: #000000;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .phone-button {
+            position: absolute;
+            right: -2px;
+            top: 90px;
+            width: 3px;
+            height: 40px;
+            background: #262626;
+            border-radius: 2px;
+        }
+
+
+
+        .loading-bar {
+            width: 70%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300%); }
+        }
+
+        .project-info {
+            text-align: center;
+            width: 100%;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary, #2d3748);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--tag-bg, #f0f4f8);
+            color: var(--text-primary, #4a5568);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-tag:hover {
+            background: var(--accent-color, #4a90e2);
+            color: white;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-color, #4a90e2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: var(--accent-color-dark, #357abd);
+            transform: translateY(-2px);
+        }
+
+        /* Maintain existing styles */
+        .menu-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: var(--card-bg, white);
+            padding: 12px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -79,6 +482,24 @@
             background: var(--accent-color-dark, #357abd);
         }
 
+
+
+
+
+        /* Scaling to fit the iframe within the phone frame for smaller screen sizes */
+        @media (max-width: 768px) {
+            .screen-iframe {
+
+            }
+        }
+
+        @media (max-width: 480px) {
+            .screen-iframe {
+                transform: scale(0.8); /* Scale even further on very small screens */
+            }
+        }
+
+
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -90,6 +511,9 @@
                 padding: 20px;
             }
         }
+
+
+
     </style>
 </head>
 <body class="page-content">
@@ -104,61 +528,62 @@
         <section class="section fade-up">
             <h1 style="text-align:center">Featured Projects</h1>
             <div class="projects-grid">
+                <!-- Example of updated card structure - repeat for all cards -->
                 <div class="project-card">
-                    <div class="project-header">
+                    <div class="phone-container">
+                        <div class="phone-frame">
+                            <div class="phone-button"></div>
+                            <div class="phone-screen">
+                                <div class="phone-notch"></div>
+                                <div class="screen-content">
+                                    <iframe
+                                            class="screen-iframe"
+                                            src="./feedMobile/page%20.html"
+                                            title="Project Preview"
+                                            sandbox="allow-scripts allow-same-origin"
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
                         <h3 class="project-title">E-Commerce Platform</h3>
                         <div class="project-tags">
                             <span class="project-tag">React</span>
                             <span class="project-tag">Node.js</span>
                         </div>
+                        <a href="#" class="project-link">View Project</a>
                     </div>
-                    <p class="project-description">
-                        A modern e-commerce solution with real-time inventory management and seamless payment integration.
-                    </p>
-                    <a href="#" class="project-link">View Project</a>
                 </div>
-
+                <!-- Repeat the card structure for other projects -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">AI Task Manager</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">TensorFlow</span>
+                    <div class="phone-container">
+                        <div class="phone-frame">
+                            <div class="phone-button"></div>
+                            <div class="phone-screen">
+                                <div class="phone-notch"></div>
+                                <div class="screen-content">
+                                    <iframe
+                                            class="screen-iframe"
+                                            src="./ride/index.html"
+                                            title="Project Preview"
+                                            sandbox="allow-scripts allow-same-origin"
+                                    ></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <p class="project-description">
-                        Smart task prioritization system using machine learning to optimize workflow efficiency.
-                    </p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Cloud Analytics Dashboard</h3>
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce Platform</h3>
                         <div class="project-tags">
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">AWS</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
                         </div>
+                        <a href="#" class="project-link">View Project</a>
                     </div>
-                    <p class="project-description">
-                        Real-time data visualization platform for cloud infrastructure monitoring.
-                    </p>
-                    <a href="#" class="project-link">View Project</a>
                 </div>
+                <!-- Add remaining project cards with the same structure -->
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Social Media Analytics</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Next.js</span>
-                            <span class="project-tag">GraphQL</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Advanced social media metrics tracking and sentiment analysis platform.
-                    </p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
             </div>
         </section>
     </div>
