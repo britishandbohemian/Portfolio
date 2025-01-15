@@ -414,21 +414,7 @@ button, a {
 /* Core elements */
 
 
-/* Interactive elements */
-.animated-button,
-.theme-toggle {
-    background: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--text-color);
-    transition: all var(--transition-speed);
-}
-
-.animated-button:hover,
-.theme-toggle:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
-}
-
+/* Interactive elements *
 
 
 .menu-link {
@@ -543,21 +529,10 @@ button, a {
     fill: var(--accent-color) !important;
 }
 
-/* Buttons and Interactive Elements */
-.animated-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    border: 1px solid var(--accent-color);
-    color: var(--text-color) !important;
-    text-decoration: none;
-    transition: all var(--transition-speed);
-    position: relative;
-    overflow: hidden;
-}
 
 .animated-button:hover {
     background: var(--accent-color);
-    color: var(--background-color) !important;
+    color: var(--text-light) !important;
 }
 
 /* Form Elements */
@@ -1182,20 +1157,7 @@ button, a {
 
 
 
-/* Interactive elements */
-.animated-button,
-.theme-toggle {
-    background: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--text-color);
-    transition: all var(--transition-speed);
-}
 
-.animated-button:hover,
-.theme-toggle:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
-}
 
 /* Navigation */
 .menu-container {
@@ -1315,7 +1277,7 @@ button, a {
     display: inline-block;
     padding: 1rem 2rem;
     border: 1px solid var(--accent-color);
-    color: var(--text-color) !important;
+    color: var(--text-dark) !important;
     text-decoration: none;
     transition: all var(--transition-speed);
     position: relative;
@@ -1324,7 +1286,7 @@ button, a {
 
 .animated-button:hover {
     background: var(--accent-color);
-    color: var(--background-color) !important;
+    color: #ffffff !important;
 }
 
 /* Form Elements */
@@ -1368,13 +1330,13 @@ button, a {
 .skill-tag {
     background: transparent;
     border: 1px solid var(--accent-color);
-    color: var(--text-color) !important;
-    transition: all var(--transition-speed);
+    color: #333333 !important;
+    transition: all 0.3s ease;
 }
 
 .skill-tag:hover {
     background: var(--accent-color);
-    color: var(--background-color) !important;
+    color: #ffffff !important;
 }
 
 /* Media Queries */
