@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Software Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg, white);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-header {
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary, #2d3748);
+            margin-bottom: 16px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .project-tag {
+            background: var(--tag-bg, #f0f4f8);
+            color: var(--text-primary, #4a5568);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: var(--text-secondary, #718096);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: var(--accent-color, #4a90e2);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: var(--accent-color-dark, #357abd);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="page-content">
+<button class="theme-toggle" aria-label="Toggle theme">
+    <span class="theme-toggle-text">THEME</span>
+</button>
+
+<div class="custom-cursor"></div>
+
+<main class="main-container">
+    <div class="container">
+        <section class="section fade-up">
+            <h1 style="text-align:center">Featured Projects</h1>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A modern e-commerce solution with real-time inventory management and seamless payment integration.
+                    </p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI Task Manager</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">TensorFlow</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Smart task prioritization system using machine learning to optimize workflow efficiency.
+                    </p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Cloud Analytics Dashboard</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">AWS</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Real-time data visualization platform for cloud infrastructure monitoring.
+                    </p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Social Media Analytics</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">GraphQL</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Advanced social media metrics tracking and sentiment analysis platform.
+                    </p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<nav class="menu-container">
+    <a href="index.html" class="menu-link active" aria-label="Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+    </a>
+    <a href="./projects.html" class="menu-link" aria-label="Projects">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </a>
+    <a href="about.html" class="menu-link" aria-label="About">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+    </a>
+    <a href="contact.html" class="menu-link" aria-label="Contact">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+    </a>
+</nav>
+
+<script src="shared.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        setActiveMenuItem();
+    });
+
+    window.addEventListener('popstate', setActiveMenuItem);
+    function setActiveMenuItem() {
+        const currentPage = window.location.pathname.split('/').pop() || 'projects.html';
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        menuLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').split('/').pop();
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+</script>
+</body>
+</html>

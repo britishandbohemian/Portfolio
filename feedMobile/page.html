@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        :root {
+            --red-primary: #d81b1b;
+            --red-secondary: #b30f0f;
+            --border-color: #ddd;
+        }
+
+        body {
+            background-color: #fafafa;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding-top: 65px;
+            /* Height of fixed header */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 65px;
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date {
+            color: #000;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 400;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-card {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-content {
+            padding: 24px;
+        }
+
+        .welcome-content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+
+        .welcome-content p {
+            color: #555;
+            font-size: 14px;
+            letter-spacing: -0.2px;
+        }
+
+        .wave-pattern {
+            height: 160px;
+            background: repeating-linear-gradient(-60deg,
+                    var(--red-primary),
+                    var(--red-primary) 15px,
+                    var(--red-secondary) 15px,
+                    var(--red-secondary) 30px);
+            transform: skewY(-8deg) translateY(15px);
+            position: relative;
+        }
+
+        .course-card {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .course-info h2 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+            color: #111;
+        }
+
+        .course-info p {
+            color: #111;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        .course-icon {
+            color: #111;
+            font-size: 18px !important;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            /* Increased height */
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 70%;
+            height: 100%;
+            background-color: var(--red-primary);
+        }
+
+        .progress-text {
+            color: #555;
+            font-size: 12px;
+            margin-top: 12px;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        .progress-text strong {
+            color: #111;
+            font-weight: 600;
+        }
+
+        .more-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .more-text {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #111;
+        }
+
+        .add-button {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #111;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-button span {
+            font-size: 24px !important;
+            font-weight: 400;
+        }
+
+        .progress-container::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            /* Adjusted for larger progress bar */
+            left: 70%;
+            width: 30%;
+            height: 6px;
+            /* Increased height */
+            background-color: #111;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 624px;
+                /* 480px + 30% */
+                padding: 30px;
+            }
+
+            .header-content {
+                max-width: 624px;
+                /* 480px + 30% */
+            }
+
+            .welcome-card,
+            .course-card {
+                border: 2px solid var(--border-color);
+            }
+
+            .welcome-content {
+                padding: 30px;
+            }
+
+            .course-card {
+                padding: 24px;
+            }
+
+            .progress-bar,
+            .progress-container::after {
+                height: 8px;
+                /* Even larger on desktop */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="date">16th February</div>
+            <div class="logo">feed</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="welcome-card">
+            <div class="welcome-content">
+                <h2>Welcome</h2>
+                <p>Username</p>
+            </div>
+            <div class="wave-pattern"></div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-header">
+                <div class="course-info">
+                    <h2>Computer Science</h2>
+                    <p>10 days left</p>
+                </div>
+                <span class="material-symbols-outlined course-icon">open_in_new</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <p class="progress-text"><strong>Start</strong> • Complete the first part of the assignment</p>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-header">
+                <div class="course-info">
+                    <h2>Computer Science</h2>
+                    <p>10 days left</p>
+                </div>
+                <span class="material-symbols-outlined course-icon">open_in_new</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <p class="progress-text"><strong>Start</strong> • Complete the first part of the assignment</p>
+            </div>
+        </div>
+
+        <div class="more-section">
+            <div class="more-text">More</div>
+            <div class="add-button">
+                <span class="material-symbols-outlined">add</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

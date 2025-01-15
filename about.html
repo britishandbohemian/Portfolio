@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Software Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section.fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            border: 1px solid #6366f1;
+            color: #000000;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #6366f1;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .menu-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 2rem;
+        }
+
+        .menu-link {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        .menu-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .menu-link.active {
+            color: #6366f1;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .animated-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .animated-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 4rem 1rem;
+            }
+
+            .section h1 {
+                font-size: 2.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-content">
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle-text">THEME</span>
+    </button>
+
+    <div class="custom-cursor"></div>
+
+    <main class="main-container ">
+        <div class="container">
+            <section class="section fade-up">
+                <h1>About Me</h1>
+                <p>UI/UX Designer and Full-stack Developer with a passion for creating intuitive, user-centered digital
+                    experiences. I blend creative design thinking with technical expertise to build solutions that make
+                    a difference.</p>
+            </section>
+
+            <section class="section fade-up">
+                <h2>Experience</h2>
+                <p>5+ years of experience in designing and developing web applications, with a focus on creating
+                    seamless user experiences. I've worked with startups and established companies, helping them achieve
+                    their digital transformation goals.</p>
+            </section>
+
+            <section class="section fade-up">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">AWS</span>
+                </div>
+            </section>
+
+            <section class="section fade-up">
+                <h2>Approach</h2>
+                <p>I believe in user-centered design and data-driven development. Every project starts with
+                    understanding user needs and business goals, followed by iterative design and development cycles to
+                    ensure the best possible outcome.</p>
+                <a href="#" class="animated-button" download>Download CV</a>
+            </section>
+        </div>
+    </main>
+
+    <nav class="menu-container">
+        <a href="index.html" class="menu-link" aria-label="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="projects.html" class="menu-link" aria-label="Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </a>
+        <a href="./about.html" class="menu-link active" aria-label="About">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </a>
+        <a href="contact.html" class="menu-link" aria-label="Contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('fade-up');
+            });
+        });
+
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'about.html';
+            const menuLinks = document.querySelectorAll('.menu-link');
+
+            menuLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('load', setActiveMenuItem);
+        window.addEventListener('popstate', setActiveMenuItem);
+    </script>
+
+    <script src="shared.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Software Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section {
+            max-width: 600px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section.fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+            color: #000000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #000000;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .form-group input:focus~label,
+        .form-group textarea:focus~label,
+        .form-group input:not(:placeholder-shown)~label,
+        .form-group textarea:not(:placeholder-shown)~label {
+            top: -1.5rem;
+            left: 0;
+            font-size: 0.8rem;
+            color: #6366f1;
+            opacity: 1;
+        }
+
+        .animated-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid #6366f1;
+            color: #000000;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .animated-button:hover {
+            background: #6366f1;
+            color: #ffffff;
+        }
+
+        .menu-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 2rem;
+        }
+
+        .menu-link {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        .menu-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .menu-link.active {
+            color: #6366f1;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 4rem 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-content">
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle-text">THEME</span>
+    </button>
+
+    <div class="custom-cursor"></div>
+
+    <main class="main-container ">
+        <div class="container">
+            <section class="section fade-up">
+                <h1>Get in Touch</h1>
+                <form action="https://formspree.io/f/xgegvage" method="post" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder=" " required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="animated-button">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <nav class="menu-container">
+        <a href="index.html" class="menu-link" aria-label="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="projects.html" class="menu-link" aria-label="Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </a>
+        <a href="about.html" class="menu-link" aria-label="About">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </a>
+        <a href="./contact.html" class="menu-link active" aria-label="Contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </nav>
+
+    <script src="shared.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('fade-up');
+            });
+        });
+
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+            const menuLinks = document.querySelectorAll('.menu-link');
+
+            menuLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('load', setActiveMenuItem);
+        window.addEventListener('popstate', setActiveMenuItem);
+    </script>
+</body>
+
+</html>
