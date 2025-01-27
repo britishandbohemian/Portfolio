@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - Software Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-
     <style>
         /* Theme Variables */
         :root[data-theme="light"] {
@@ -302,7 +301,8 @@
             transform: translateX(-50%);
             display: flex;
             gap: 20px;
-            background: var(--card-bg);
+            background: var(--accent-color);
+            /* Red */
             padding: 12px 24px;
             border-radius: 16px;
             box-shadow: 0 4px 12px var(--shadow-color);
@@ -310,7 +310,8 @@
         }
 
         .menu-link {
-            color: var(--text-dark);
+            color: var(--text-light);
+            /* White */
             opacity: 0.7;
             transition: opacity 0.3s ease;
             display: flex;
@@ -328,7 +329,28 @@
         .menu-link svg {
             width: 24px;
             height: 24px;
-            fill: var(--text-dark);
+            fill: var(--text-light);
+            /* White */
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Styles */
@@ -344,6 +366,7 @@
             }
         }
     </style>
+
 </head>
 
 <body class="page-content">

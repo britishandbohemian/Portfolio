@@ -8,6 +8,299 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <style>
+        /* Theme Variables */
+        :root[data-theme="light"] {
+            --primary-color: #000000;
+            /* Black */
+            --accent-color: #ff0000;
+            /* Red */
+            --background: #ffffff;
+            /* White */
+            --text-dark: #000000;
+            /* Black */
+            --text-light: #ffffff;
+            /* White */
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            /* Light shadow */
+            --card-bg: #ffffff;
+            /* White */
+            --tag-bg: #f0f4f8;
+            /* Light gray */
+        }
+
+        :root[data-theme="dark"] {
+            --primary-color: #ffffff;
+            /* White */
+            --accent-color: #ff0000;
+            /* Red */
+            --background: #000000;
+            /* Black */
+            --text-dark: #ffffff;
+            /* White */
+            --text-light: #000000;
+            /* Black */
+            --shadow-color: rgba(255, 255, 255, 0.15);
+            /* Dark shadow */
+            --card-bg: #1a1a1a;
+            /* Dark gray */
+            --tag-bg: #333333;
+            /* Dark gray */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Page Content */
+        .page-content {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: var(--background);
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            /* Red */
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.7;
+            transform-origin: center;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+        }
+
+        .custom-cursor.hover {
+            transform: scale(1.5);
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .section.fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--text-dark);
+            color: var(--text-dark);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            /* Red */
+        }
+
+        .form-group input:focus~label,
+        .form-group textarea:focus~label,
+        .form-group input:not(:placeholder-shown)~label,
+        .form-group textarea:not(:placeholder-shown)~label {
+            top: -1.5rem;
+            left: 0;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            /* Red */
+            opacity: 1;
+        }
+
+        /* Animated Button */
+        .animated-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            /* Red */
+            color: var(--text-light);
+            /* White */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .animated-button:hover {
+            background: var(--primary-color);
+            /* Black in light mode, White in dark mode */
+            color: var(--accent-color);
+            /* Red */
+            transform: translateY(-2px);
+        }
+
+        /* Navigation Menu */
+        .menu-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            /* Red */
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .menu-link {
+            color: var(--text-light);
+            /* White */
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            opacity: 1;
+        }
+
+        .menu-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-light);
+            /* White */
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 4rem 1.5rem;
+            }
+
+            .section h1 {
+                font-size: 2.2rem;
+            }
+
+            .menu-container {
+                padding: 0.6rem 1rem;
+                gap: 1.5rem;
+            }
+
+            .menu-link svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="page-content">
