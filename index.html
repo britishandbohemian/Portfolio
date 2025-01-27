@@ -2,158 +2,495 @@
 <html lang="en" data-theme="light">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Home - Software Portfolio</title>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Software Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-	<link rel="stylesheet" href="shared.css">
+    <style>
+        /* Theme Variables */
+        :root[data-theme="light"] {
+            --primary-color: #000000;
+            /* Black */
+            --accent-color: #ff0000;
+            /* Red */
+            --background: #ffffff;
+            /* White */
+            --text-dark: #000000;
+            /* Black */
+            --text-light: #ffffff;
+            /* White */
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            /* Light shadow */
+            --device-border: #000000;
+            /* Black */
+        }
+
+        :root[data-theme="dark"] {
+            --primary-color: #ffffff;
+            /* White */
+            --accent-color: #ff0000;
+            /* Red */
+            --background: #000000;
+            /* Black */
+            --text-dark: #ffffff;
+            /* White */
+            --text-light: #000000;
+            /* Black */
+            --shadow-color: rgba(255, 255, 255, 0.15);
+            /* Dark shadow */
+            --device-border: #ffffff;
+            /* White */
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Page Content */
+        .page-content {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: var(--background);
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            /* Red */
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.7;
+            transform-origin: center;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+        }
+
+        .custom-cursor.hover {
+            transform: scale(1.5);
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Text Content */
+        .text-content {
+            flex: 1;
+            max-width: 500px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            animation: fadeUp 0.8s ease forwards 0.3s;
+            opacity: 0;
+            color: var(--text-dark);
+        }
+
+        .subtitle {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--accent-color);
+            /* Red */
+            margin: 1rem 0;
+            animation: fadeUp 0.8s ease forwards 0.5s;
+            opacity: 0;
+        }
+
+        /* Device Mockups */
+        .device-showcase {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideIn 0.8s ease forwards 0.2s;
+            max-width: 100%;
+        }
+
+        .device {
+            background: var(--background);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            display: none;
+            border: 12px solid var(--device-border);
+            max-width: 100%;
+        }
+
+        .phone-mockup {
+            width: min(300px, 90vw);
+            height: min(600px, 80vh);
+        }
+
+        .tablet-mockup {
+            width: min(800px, 90vw);
+            height: min(600px, 70vh);
+        }
+
+        .desktop-mockup {
+            width: min(1000px, 90vw);
+            height: min(600px, 70vh);
+            border-radius: 20px;
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 30px;
+            background-color: var(--background);
+        }
+
+        /* Buttons */
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.7s;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            /* Red */
+            color: var(--text-light);
+            /* White */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            opacity: 0.9;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            /* Red */
+            color: var(--text-dark);
+            /* Black in light mode, White in dark mode */
+        }
+
+        /* Navigation */
+        .menu-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            /* Red */
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .menu-link {
+            color: var(--text-light);
+            /* White */
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            opacity: 1;
+        }
+
+        .menu-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-light);
+            /* White */
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                text-align: center;
+                padding: 4rem 1rem;
+            }
+
+            .text-content {
+                max-width: 100%;
+            }
+
+            .cta-container {
+                justify-content: center;
+            }
+
+            .menu-container {
+                padding: 0.6rem 1rem;
+                gap: 1.5rem;
+            }
+
+            .menu-link svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+            }
+        }
+
+        /* Maintain aspect ratio for devices */
+        [data-orientation="portrait"] .tablet-mockup {
+            width: min(600px, 90vw);
+            height: min(800px, 80vh);
+        }
+
+        [data-orientation="landscape"] .tablet-mockup {
+            width: min(800px, 90vw);
+            height: min(600px, 70vh);
+        }
+    </style>
 </head>
 
 <body class="page-content">
-	<button class="theme-toggle" aria-label="Toggle theme">
-		<span class="theme-toggle-text">THEME</span>
-	</button>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle-text">THEME</span>
+    </button>
 
-	<div class="custom-cursor"></div>
-
-
-
-	<div class="main-container">
-		<div class="content-wrapper">
-			<div class="text-content">
-				<h1 class="title">PORTFOLIO</h1>
-				<h2 class="subtitle">Software Developer</h2>
-				<div class="cta-container">
-					<a href="projects.html" class="cta-button">View Projects</a>
-					<a href="about.html" class="cta-button secondary">About Me</a>
-				</div>
-			</div>
-
-			<div class="device-showcase">
-				<div class="device phone-mockup">
-					<div class="volume-buttons"></div>
-					<div class="power-button"></div>
-					<iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
-				</div>
-				<div class="device tablet-mockup">
-					<iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
-				</div>
-				<div class="device desktop-mockup">
-					<iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
-				</div>
-			</div>
-
-		</div>
-	</div>
+    <div class="custom-cursor"></div>
 
 
-	<nav class="menu-container">
-		<a href="./index.html" class="menu-link" aria-label="Home">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-				<polyline points="9 22 9 12 15 12 15 22"></polyline>
-			</svg>
-		</a>
-		<a href="projects.html" class="menu-link" aria-label="Projects">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-			</svg>
-		</a>
-		<a href="about.html" class="menu-link" aria-label="About">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-				<circle cx="12" cy="7" r="4"></circle>
-			</svg>
-		</a>
-		<a href="contact.html" class="menu-link" aria-label="Contact">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-				<polyline points="22,6 12,13 2,6"></polyline>
-			</svg>
-		</a>
-	</nav>
 
-	<script src="shared.js"></script>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h1 class="title">PORTFOLIO</h1>
+                <h2 class="subtitle">Software Developer</h2>
+                <div class="cta-container">
+                    <a href="projects.html" class="cta-button">View Projects</a>
+                    <a href="about.html" class="cta-button secondary">About Me</a>
+                </div>
+            </div>
 
-	<script>
-		// Previous script content remains
+            <div class="device-showcase">
+                <div class="device phone-mockup">
+                    <div class="volume-buttons"></div>
+                    <div class="power-button"></div>
+                    <iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="device tablet-mockup">
+                    <iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="device desktop-mockup">
+                    <iframe src="feedMobile/page.html" class="screen-content" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
 
-		// Device detection and orientation handling
-		function detectDevice() {
-			const width = window.innerWidth;
-			const height = window.innerHeight;
-			const orientation = width > height ? 'landscape' : 'portrait';
+        </div>
+    </div>
 
-			document.body.setAttribute('data-orientation', orientation);
 
-			const devices = document.querySelectorAll('.device');
-			devices.forEach(device => device.style.display = 'none');
+    <nav class="menu-container">
+        <a href="./index.html" class="menu-link" aria-label="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="projects.html" class="menu-link" aria-label="Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </a>
+        <a href="about.html" class="menu-link" aria-label="About">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </a>
+        <a href="contact.html" class="menu-link" aria-label="Contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </nav>
 
-			if (width < 768) {
-				document.querySelector('.phone-mockup').style.display = 'block';
-			} else if (width < 1200) {
-				document.querySelector('.tablet-mockup').style.display = 'block';
-			} else {
-				document.querySelector('.desktop-mockup').style.display = 'block';
-			}
-		}
+    <script src="shared.js"></script>
 
-		// Theme toggling
-		function toggleTheme() {
-			const currentTheme = document.body.getAttribute('data-theme');
-			const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-			document.body.setAttribute('data-theme', newTheme);
-			localStorage.setItem('theme', newTheme);
-		}
+    <script>
+        // Previous script content remains
 
-		// Initialize theme from localStorage
-		function initTheme() {
-			const savedTheme = localStorage.getItem('theme') || 'light';
-			document.body.setAttribute('data-theme', savedTheme);
-		}
+        // Device detection and orientation handling
+        function detectDevice() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const orientation = width > height ? 'landscape' : 'portrait';
 
-		// Event Listeners
-		window.addEventListener('load', () => {
-			detectDevice();
-			initTheme();
-		});
+            document.body.setAttribute('data-orientation', orientation);
 
-		window.addEventListener('resize', detectDevice);
-		document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+            const devices = document.querySelectorAll('.device');
+            devices.forEach(device => device.style.display = 'none');
 
-		// Menu active state handling
-		function setActiveMenuItem() {
-			const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-			const menuLinks = document.querySelectorAll('.menu-link');
+            if (width < 768) {
+                document.querySelector('.phone-mockup').style.display = 'block';
+            } else if (width < 1200) {
+                document.querySelector('.tablet-mockup').style.display = 'block';
+            } else {
+                document.querySelector('.desktop-mockup').style.display = 'block';
+            }
+        }
 
-			menuLinks.forEach(link => {
-				const linkPage = link.getAttribute('href').split('/').pop();
-				if (linkPage === currentPage) {
-					link.classList.add('active');
-				} else {
-					link.classList.remove('active');
-				}
-			});
-		}
+        // Theme toggling
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
 
-		// Initialize menu state
-		window.addEventListener('load', () => {
-			detectDevice();
-			initTheme();
-			setActiveMenuItem();
-		});
+        // Initialize theme from localStorage
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+        }
 
-		// Update menu state on navigation
-		window.addEventListener('popstate', setActiveMenuItem);
+        // Event Listeners
+        window.addEventListener('load', () => {
+            detectDevice();
+            initTheme();
+        });
 
-		// Previous event listeners remain
-	</script>
+        window.addEventListener('resize', detectDevice);
+        document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+
+        // Menu active state handling
+        function setActiveMenuItem() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const menuLinks = document.querySelectorAll('.menu-link');
+
+            menuLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize menu state
+        window.addEventListener('load', () => {
+            detectDevice();
+            initTheme();
+            setActiveMenuItem();
+        });
+
+        // Update menu state on navigation
+        window.addEventListener('popstate', setActiveMenuItem);
+
+        // Previous event listeners remain
+    </script>
 </body>
 
 </html>
