@@ -4,48 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+
     <title>Contact - Software Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
     <style>
         /* Theme Variables */
         :root[data-theme="light"] {
             --primary-color: #000000;
-            /* Black */
             --accent-color: #ff0000;
-            /* Red */
             --background: #ffffff;
-            /* White */
             --text-dark: #000000;
-            /* Black */
             --text-light: #ffffff;
-            /* White */
             --shadow-color: rgba(0, 0, 0, 0.15);
-            /* Light shadow */
             --card-bg: #ffffff;
-            /* White */
             --tag-bg: #f0f4f8;
-            /* Light gray */
         }
 
         :root[data-theme="dark"] {
             --primary-color: #ffffff;
-            /* White */
             --accent-color: #ff0000;
-            /* Red */
             --background: #000000;
-            /* Black */
             --text-dark: #ffffff;
-            /* White */
             --text-light: #000000;
-            /* Black */
             --shadow-color: rgba(255, 255, 255, 0.15);
-            /* Dark shadow */
             --card-bg: #1a1a1a;
-            /* Dark gray */
             --tag-bg: #333333;
-            /* Dark gray */
         }
 
         /* Base Styles */
@@ -54,6 +39,8 @@
             background-color: var(--background);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
         }
 
         /* Page Content */
@@ -89,7 +76,6 @@
             width: 20px;
             height: 20px;
             background-color: var(--accent-color);
-            /* Red */
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -113,12 +99,12 @@
             min-height: 100vh;
             padding: 2rem;
             position: relative;
-            overflow-x: hidden;
         }
 
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 800px;
+            /* Adjusted for better readability */
             margin: 0 auto;
             padding: 2rem;
         }
@@ -185,7 +171,6 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-color);
-            /* Red */
         }
 
         .form-group input:focus~label,
@@ -196,7 +181,6 @@
             left: 0;
             font-size: 0.8rem;
             color: var(--accent-color);
-            /* Red */
             opacity: 1;
         }
 
@@ -205,9 +189,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             background: var(--accent-color);
-            /* Red */
             color: var(--text-light);
-            /* White */
             text-decoration: none;
             border-radius: 8px;
             font-weight: 500;
@@ -216,9 +198,7 @@
 
         .animated-button:hover {
             background: var(--primary-color);
-            /* Black in light mode, White in dark mode */
             color: var(--accent-color);
-            /* Red */
             transform: translateY(-2px);
         }
 
@@ -229,7 +209,6 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent-color);
-            /* Red */
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             display: flex;
@@ -240,7 +219,6 @@
 
         .menu-link {
             color: var(--text-light);
-            /* White */
             opacity: 0.7;
             transition: opacity 0.3s ease;
             display: flex;
@@ -257,7 +235,6 @@
             width: 24px;
             height: 24px;
             fill: var(--text-light);
-            /* White */
         }
 
         /* Animations */
@@ -276,11 +253,21 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 4rem 1.5rem;
+                padding: 2rem 1rem;
+                /* Adjusted padding for mobile */
             }
 
             .section h1 {
                 font-size: 2.2rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
             }
 
             .menu-container {
@@ -299,8 +286,27 @@
                 padding: 0.6rem 1rem;
             }
         }
-    </style>
 
+        @media (max-width: 480px) {
+            .section h1 {
+                font-size: 2rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem;
+            }
+
+            .form-group label {
+                font-size: 0.8rem;
+            }
+
+            .animated-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="page-content">
@@ -310,7 +316,7 @@
 
     <div class="custom-cursor"></div>
 
-    <main class="main-container ">
+    <main class="main-container">
         <div class="container">
             <section class="section fade-up">
                 <h1>Get in Touch</h1>
@@ -327,7 +333,8 @@
                         <textarea id="message" name="message" placeholder=" " required></textarea>
                         <label for="message">Message</label>
                     </div>
-                    <button type="submit" class="animated-button">Send Message</button>
+                    <a type="submit" class="animated-button">Send Message</a>
+
                 </form>
             </section>
         </div>
@@ -335,17 +342,14 @@
 
     <div id="component-container"></div>
 
-    <script src="shared.js"></script>
-
     <script>
-
-
         fetch('menu.html')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('component-container').innerHTML = html;
             })
             .catch(error => console.error('Error loading component:', error));
+
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -370,6 +374,8 @@
         window.addEventListener('load', setActiveMenuItem);
         window.addEventListener('popstate', setActiveMenuItem);
     </script>
+
+    <script src="shared.js"></script>
 </body>
 
 </html>

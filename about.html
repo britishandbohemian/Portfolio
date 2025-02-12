@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Software Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
@@ -11,40 +12,24 @@
         /* Theme Variables */
         :root[data-theme="light"] {
             --primary-color: #000000;
-            /* Black */
             --accent-color: #ff0000;
-            /* Red */
             --background: #ffffff;
-            /* White */
             --text-dark: #000000;
-            /* Black */
             --text-light: #ffffff;
-            /* White */
             --shadow-color: rgba(0, 0, 0, 0.15);
-            /* Light shadow */
             --card-bg: #ffffff;
-            /* White */
             --tag-bg: #f0f4f8;
-            /* Light gray */
         }
 
         :root[data-theme="dark"] {
             --primary-color: #ffffff;
-            /* White */
             --accent-color: #ff0000;
-            /* Red */
             --background: #000000;
-            /* Black */
             --text-dark: #ffffff;
-            /* White */
             --text-light: #000000;
-            /* Black */
             --shadow-color: rgba(255, 255, 255, 0.15);
-            /* Dark shadow */
             --card-bg: #1a1a1a;
-            /* Dark gray */
             --tag-bg: #333333;
-            /* Dark gray */
         }
 
         /* Base Styles */
@@ -53,6 +38,8 @@
             background-color: var(--background);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
         }
 
         /* Page Content */
@@ -88,7 +75,6 @@
             width: 20px;
             height: 20px;
             background-color: var(--accent-color);
-            /* Red */
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -112,12 +98,12 @@
             min-height: 100vh;
             padding: 2rem;
             position: relative;
-            overflow-x: hidden;
         }
 
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 800px;
+            /* Adjusted for better readability */
             margin: 0 auto;
             padding: 2rem;
         }
@@ -177,9 +163,7 @@
 
         .skill-tag:hover {
             background: var(--accent-color);
-            /* Red */
             color: var(--text-light);
-            /* White */
             transform: translateY(-2px);
         }
 
@@ -188,9 +172,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             background: var(--accent-color);
-            /* Red */
             color: var(--text-light);
-            /* White */
             text-decoration: none;
             border-radius: 8px;
             font-weight: 500;
@@ -199,9 +181,7 @@
 
         .animated-button:hover {
             background: var(--primary-color);
-            /* Black in light mode, White in dark mode */
             color: var(--accent-color);
-            /* Red */
             transform: translateY(-2px);
         }
 
@@ -212,7 +192,6 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent-color);
-            /* Red */
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             display: flex;
@@ -223,7 +202,6 @@
 
         .menu-link {
             color: var(--text-light);
-            /* White */
             opacity: 0.7;
             transition: opacity 0.3s ease;
             display: flex;
@@ -240,7 +218,6 @@
             width: 24px;
             height: 24px;
             fill: var(--text-light);
-            /* White */
         }
 
         /* Animations */
@@ -259,7 +236,8 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 4rem 1.5rem;
+                padding: 2rem 1rem;
+                /* Adjusted padding for mobile */
             }
 
             .section h1 {
@@ -300,8 +278,35 @@
                 padding: 0.6rem 1rem;
             }
         }
-    </style>
 
+        @media (max-width: 480px) {
+            .section h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .section p {
+                font-size: 0.9rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .skill-tag {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .animated-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="page-content">
@@ -311,7 +316,7 @@
 
     <div class="custom-cursor"></div>
 
-    <main class="main-container ">
+    <main class="main-container">
         <div class="container">
             <section class="section fade-up">
                 <h1>About Me</h1>
@@ -350,7 +355,6 @@
     </main>
     <div id="component-container"></div>
 
-
     <script>
         fetch('menu.html')
             .then(response => response.text())
@@ -358,13 +362,6 @@
                 document.getElementById('component-container').innerHTML = html;
             })
             .catch(error => console.error('Error loading component:', error));
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.add('fade-up');
-            });
-        });
-
 
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
