@@ -11,39 +11,26 @@
 
     <style>
         /* Theme Variables */
-        :root[data-theme="light"] {
-            --primary-color: #000000;
-            /* Black */
-            --accent-color: #ff0000;
-            /* Red */
-            --background: #ffffff;
-            /* White */
-            --text-dark: #000000;
-            /* Black */
-            --text-light: #ffffff;
-            /* White */
-            --shadow-color: rgba(0, 0, 0, 0.15);
-            /* Light shadow */
-            --device-border: #000000;
-            /* Black */
-        }
+:root[data-theme="light"] {
+    --primary-color: #000000; /* Black */
+    --accent-color: #A9A9A9; /* Dark Gray */
+    --background: #ffffff; /* White */
+    --text-dark: #000000; /* Black */
+    --text-light: #ffffff; /* White */
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Light shadow */
+    --device-border: #000000; /* Black */
+}
 
-        :root[data-theme="dark"] {
-            --primary-color: #ffffff;
-            /* White */
-            --accent-color: #ff0000;
-            /* Red */
-            --background: #000000;
-            /* Black */
-            --text-dark: #ffffff;
-            /* White */
-            --text-light: #000000;
-            /* Black */
-            --shadow-color: rgba(255, 255, 255, 0.15);
-            /* Dark shadow */
-            --device-border: #ffffff;
-            /* White */
-        }
+:root[data-theme="dark"] {
+    --primary-color: #ffffff; /* White */
+    --accent-color: #696969; /* Dim Gray */
+    --background: #000000; /* Black */
+    --text-dark: #ffffff; /* White */
+    --text-light: #000000; /* Black */
+    --shadow-color: rgba(255, 255, 255, 0.15); /* Dark shadow */
+    --device-border: #ffffff; /* White */
+}
+
 
         /* Base Styles */
         * {
@@ -204,7 +191,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 30px;
             background-color: var(--background);
         }
 

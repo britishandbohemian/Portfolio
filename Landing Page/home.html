@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinimalBank</title>
+    <!-- Google Fonts: Poppins + Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0066ff;
+            --primary-light: #e6f0ff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #00c853;
+            --danger-color: #ff3d00;
+            --background-color: #ffffff;
+            --card-color: #ffffff;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border-color: #eeeeee;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --font-size-small: 13px;
+            --font-size-body: 15px;
+            --font-size-title: 17px;
+            --font-size-large: 24px;
+            --font-size-xlarge: 32px;
+        }
+
+        .dark-mode {
+            --primary-color: #4d94ff;
+            --primary-light: #1a2733;
+            --secondary-color: #1a1a1a;
+            --accent-color: #2bbd7e;
+            --danger-color: #ff6d42;
+            --background-color: #121212;
+            --card-color: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            padding: 0;
+            margin: 0;
+            padding-bottom: 76px;
+            font-size: var(--font-size-body);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+            background-color: var(--background-color);
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: var(--font-size-title);
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            margin-right: var(--spacing-sm);
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .icon-button:hover, .icon-button:focus {
+            background-color: var(--secondary-color);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title {
+            font-size: var(--font-size-title);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .balance-card {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .account-balance {
+            padding: var(--spacing-md) 0;
+        }
+
+        .balance-label {
+            font-size: var(--font-size-small);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .balance-amount {
+            font-size: var(--font-size-xlarge);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.5px;
+        }
+
+        .balance-trend {
+            display: flex;
+            align-items: center;
+            font-size: var(--font-size-small);
+            opacity: 0.9;
+        }
+
+        .balance-trend span {
+            margin-right: var(--spacing-xs);
+        }
+
+        .toggle-visibility {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+            font-size: var(--font-size-small);
+            transition: background-color 0.2s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .toggle-visibility:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--spacing-xs);
+            cursor: pointer;
+        }
+
+        .action-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-xs);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .material-icons-round {
+            font-size: 24px;
+        }
+
+        .action-button:hover .action-icon {
+            transform: translateY(-2px);
+        }
+
+        .action-name {
+            font-size: var(--font-size-small);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .transaction-list {
+            margin-top: var(--spacing-md);
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            color: var(--primary-color);
+        }
+
+        .transaction-details {
+            flex: 1;
+        }
+
+        .transaction-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .transaction-date {
+            font-size: var(--font-size-small);
+            color: var(--text-secondary);
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+        }
+
+        .transaction-amount.credit {
+            color: var(--accent-color);
+        }
+
+        .transaction-amount.debit {
+            color: var(--danger-color);
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .insight-card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            height: 140px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .insight-title {
+            font-size: var(--font-size-small);
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .insight-value {
+            font-size: var(--font-size-large);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .insight-change {
+            font-size: var(--font-size-small);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .insight-change.positive {
+            color: var(--accent-color);
+        }
+
+        .insight-change.negative {
+            color: var(--danger-color);
+        }
+
+        .insight-chart {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .chart-bar {
+            flex: 1;
+            margin: 0 1px;
+            background-color: var(--primary-light);
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .budget-progress {
+            margin-top: var(--spacing-md);
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .budget-progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 65%;
+        }
+
+        .upcoming-payment {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+        }
+
+        .upcoming-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            color: var(--primary-color);
+        }
+
+        .upcoming-details {
+            flex: 1;
+        }
+
+        .upcoming-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .upcoming-date {
+            font-size: var(--font-size-small);
+            color: var(--text-secondary);
+        }
+
+        .upcoming-amount {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            font-size: var(--font-size-small);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-color);
+            display: flex;
+            justify-content: space-around;
+            padding: var(--spacing-xs) 0;
+            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            min-width: 60px;
+        }
+
+        .nav-icon {
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active .nav-icon {
+            color: var(--primary-color);
+        }
+
+        .nav-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .float-button {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.2s;
+        }
+
+        .float-button:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--card-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .section-separator {
+            height: 8px;
+            background-color: var(--secondary-color);
+            margin: var(--spacing-lg) -16px;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 360px) {
+            .quick-actions {
+                grid-template-columns: repeat(4, 1fr);
+                gap: var(--spacing-sm);
+            }
+            
+            .action-icon {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .action-name {
+                font-size: 11px;
+            }
+            
+            .balance-amount {
+                font-size: 28px;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">M</div>
+            MinimalBank
+        </div>
+        <div class="header-icons">
+            <button class="icon-button">
+                <span class="material-icons-round">notifications</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="card balance-card">
+                <div class="account-balance">
+                    <div class="balance-label">Total Balance</div>
+                    <div class="balance-amount" id="balanceAmount">$12,456</div>
+                    <div class="balance-trend">
+                        <span class="material-icons-round" style="font-size: 16px;">trending_up</span> +$342 this month
+                    </div>
+                </div>
+                <button class="toggle-visibility" id="toggleBalance">Hide</button>
+            </div>
+
+            <div class="quick-actions">
+                <div class="action-button">
+                    <div class="action-icon">
+                        <span class="material-icons-round">swap_horiz</span>
+                    </div>
+                    <div class="action-name">Transfer</div>
+                </div>
+                <div class="action-button">
+                    <div class="action-icon">
+                        <span class="material-icons-round">receipt_long</span>
+                    </div>
+                    <div class="action-name">Pay Bills</div>
+                </div>
+                <div class="action-button">
+                    <div class="action-icon">
+                        <span class="material-icons-round">qr_code_scanner</span>
+                    </div>
+                    <div class="action-name">Scan</div>
+                </div>
+                <div class="action-button">
+                    <div class="action-icon">
+                        <span class="material-icons-round">more_horiz</span>
+                    </div>
+                    <div class="action-name">More</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                Recent Activity
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="card">
+                <div class="transaction-list">
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <span class="material-icons-round">shopping_cart</span>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-name">Whole Foods Market</div>
+                            <div class="transaction-date">Today</div>
+                        </div>
+                        <div class="transaction-amount debit">-$124.35</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <span class="material-icons-round">payments</span>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-name">Salary Deposit</div>
+                            <div class="transaction-date">Yesterday</div>
+                        </div>
+                        <div class="transaction-amount credit">+$3,240.00</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <span class="material-icons-round">bolt</span>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-name">Power & Light Co.</div>
+                            <div class="transaction-date">Mar 01</div>
+                        </div>
+                        <div class="transaction-amount debit">-$87.45</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                Financial Insights
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-title">Monthly Spending</div>
+                    <div class="insight-value">$2,850</div>
+                    <div class="insight-change negative">
+                        <span class="material-icons-round" style="font-size: 16px; margin-right: 4px;">trending_up</span> 12% from last month
+                    </div>
+                    <div class="insight-chart">
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 40%;"></div>
+                        <div class="chart-bar" style="height: 70%;"></div>
+                        <div class="chart-bar" style="height: 50%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 65%;"></div>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Monthly Income</div>
+                    <div class="insight-value">$4,250</div>
+                    <div class="insight-change positive">
+                        <span class="material-icons-round" style="font-size: 16px; margin-right: 4px;">trending_up</span> 5% from last month
+                    </div>
+                    <div class="insight-chart">
+                        <div class="chart-bar" style="height: 70%;"></div>
+                        <div class="chart-bar" style="height: 65%;"></div>
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                        <div class="chart-bar" style="height: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: var(--spacing-md);">
+                <div class="insight-title">March Budget</div>
+                <div class="insight-value">65%</div>
+                <div class="insight-change">$2,850 of $4,400</div>
+                <div class="budget-progress">
+                    <div class="budget-progress-bar                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-payment">
+                <div class="upcoming-icon">
+                    <span class="material-icons-round">event</span>
+                </div>
+                <div class="upcoming-details">
+                    <div class="upcoming-title">Rent Payment Due</div>
+                    <div class="upcoming-date">March 15, 2024</div>
+                </div>
+                <div class="upcoming-amount">$1,850</div>
+            </div>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section class="section">
+            <div class="section-title">
+                Savings Goals
+            </div>
+            <div class="card">
+                <div class="insight-title">Emergency Fund</div>
+                <div class="insight-value">$8,200</div>
+                <div class="insight-change">$8,200 of $10,000</div>
+                <div class="budget-progress">
+                    <div class="budget-progress-bar" style="width: 82%;"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="float-button pulse">
+        <span class="material-icons-round">add</span>
+    </button>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle">
+        <span class="material-icons-round">dark_mode</span>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <span class="material-icons-round nav-icon">home</span>
+            <span class="nav-label">Home</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-icons-round nav-icon">pie_chart</span>
+            <span class="nav-label">Insights</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-icons-round nav-icon">credit_card</span>
+            <span class="nav-label">Cards</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-icons-round nav-icon">person</span>
+            <span class="nav-label">Profile</span>
+        </div>
+    </nav>
+
+    <script>
+        // Balance visibility toggle
+        const toggleBalance = document.getElementById('toggleBalance');
+        const balanceAmount = document.getElementById('balanceAmount');
+        let balanceVisible = true;
+
+        toggleBalance.addEventListener('click', () => {
+            balanceVisible = !balanceVisible;
+            balanceAmount.textContent = balanceVisible ? '$12,456' : '••••••';
+            toggleBalance.textContent = balanceVisible ? 'Hide' : 'Show';
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.querySelector('span').textContent = 
+                document.body.classList.contains('dark-mode') ? 'light_mode' : 'dark_mode';
+        });
+    </script>
+</body>
+</html>

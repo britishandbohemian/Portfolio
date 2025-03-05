@@ -8,6 +8,69 @@
     <title>Projects - Software Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
+
+        .projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem 5%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.project-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.tech-stack {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-stack span {
+  background: #f5f5f5;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.view-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: #2d3748;
+  font-weight: 600;
+  border: 2px solid #2d3748;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #2d3748;
+  color: white;
+}
         /* Theme Variables */
         :root[data-theme="light"] {
             --primary-color: #000000;
@@ -219,52 +282,182 @@
         <div class="container">
             <section class="section fade-up">
                 <h1 style="text-align:center;padding:19px;">Featured Projects</h1>
-                <div class="projects-grid">
-                    <!-- Simple Card Design -->
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/300x200" alt="Project Image">
-                        <div class="project-info">
-                            <h3 class="project-title">E-Commerce App</h3>
-                            <p class="project-description">A modern e-commerce platform built with React and Node.js.
-                                Features include product listings, cart management, and secure payments.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Node.js</span>
-                            </div>
-                            <a href="#" class="project-link">View Project</a>
-                        </div>
-                    </div>
+   <!-- Projects Page -->
+<div class="projects-container">
+  <!-- Project Card 1: Banking Website Clone -->
+  <div class="project-card">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2196F3;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad1)" rx="12" filter="url(#shadow)"/>
+  
+  <!-- Browser Mockup -->
+  <rect x="40" y="40" width="320" height="220" fill="#ffffff" rx="6"/>
+  <rect x="50" y="50" width="300" height="30" fill="#f5f5f5" rx="4"/>
+  <circle cx="70" cy="65" r="4" fill="#ff605c"/>
+  <circle cx="90" cy="65" r="4" fill="#ffbd44"/>
+  <circle cx="110" cy="65" r="4" fill="#00ca4e"/>
+  <rect x="50" y="100" width="300" height="40" fill="#e3f2fd" rx="4"/>
+  <rect x="50" y="160" width="120" height="80" fill="#1976D2" rx="6"/>
+  <rect x="190" y="160" width="160" height="80" fill="#2196F3" rx="6"/>
+</svg>
+    <div class="card-content">
+      <h3>Responsive Banking Website Clone</h3>
+      <p>Replicated a major bank's website with mobile-first design, adaptive layouts, and WCAG-compliant accessibility features.</p>
+      <div class="tech-stack">
+        <span>HTML5</span>
+        <span>CSS Grid</span>
+        <span>JavaScript</span>
+      </div>
+      <a href="#" class="view-btn">View Project →</a>
+    </div>
+  </div>
 
-                    <!-- Project Card 1 -->
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/300x200" alt="Project Image">
-                        <div class="project-info">
-                            <h3 class="project-title">E-Commerce Platform</h3>
-                            <p class="project-description">A scalable e-commerce solution with React frontend and
-                                Node.js backend. Supports user authentication and product management.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Node.js</span>
-                            </div>
-                            <a href="#" class="project-link">View Project</a>
-                        </div>
-                    </div>
+  <!-- Project Card 2: Finance Management Tool -->
+  <div class="project-card">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#388E3C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="texture" patternUnits="userSpaceOnUse" width="4" height="4">
+      <path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" stroke="#fff" stroke-opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad2)" rx="12"/>
+  
+  <!-- Dashboard Elements -->
+  <rect x="50" y="60" width="300" height="160" fill="#fff" rx="8" filter="url(#shadow)"/>
+  <path d="M70 100 L130 180 L190 120 L250 160 L310 100" stroke="#4CAF50" stroke-width="3" fill="none"/>
+  <rect x="70" y="200" width="80" height="40" fill="#81C784" rx="4"/>
+  <rect x="180" y="200" width="80" height="40" fill="#81C784" rx="4"/>
+  <circle cx="300" cy="220" r="20" fill="#FFD54F"/>
+  <rect width="100%" height="100%" fill="url(#texture)"/>
+</svg>
+    <div class="card-content">
+      <h3>Personal Finance Management Tool</h3>
+      <p>Full-stack budgeting app with expense tracking, interactive charts, and user authentication.</p>
+      <div class="tech-stack">
+        <span>React</span>
+        <span>Node.js</span>
+        <span>MongoDB</span>
+      </div>
+      <a href="#" class="view-btn">View Project →</a>
+    </div>
+  </div>
 
-                    <!-- Project Card 2 -->
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/300x200" alt="Project Image">
-                        <div class="project-info">
-                            <h3 class="project-title">E-Commerce Platform</h3>
-                            <p class="project-description">An e-commerce platform with a responsive design and robust
-                                backend. Built using React and Node.js for seamless user experiences.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Node.js</span>
-                            </div>
-                            <a href="#" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                </div>
+  <!-- Project Card 3: E-commerce Platform -->
+  <div class="project-card">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FB8C00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA726;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad3)" rx="12"/>
+  
+  <!-- Product Cards -->
+  <rect x="50" y="60" width="120" height="120" fill="#fff" rx="8" filter="url(#shadow)"/>
+  <rect x="60" y="70" width="100" height="80" fill="#BDBDBD"/>
+  <rect x="60" y="160" width="100" height="10" fill="#E0E0E0" rx="2"/>
+  
+  <rect x="200" y="60" width="120" height="120" fill="#fff" rx="8" filter="url(#shadow)"/>
+  <circle cx="260" cy="130" r="30" fill="#EF5350"/>
+  <rect x="200" y="160" width="120" height="10" fill="#E0E0E0" rx="2"/>
+  
+  <!-- Shopping Cart -->
+  <path d="M340 220 L320 200 L360 200 L340 220" fill="#fff"/>
+  <circle cx="340" cy="220" r="15" fill="#fff"/>
+  <text x="340" y="225" font-size="14" fill="#FB8C00" text-anchor="middle" font-weight="bold">3</text>
+</svg>
+    <div class="card-content">
+      <h3>E-commerce Platform</h3>
+      <p>Secure online store with Stripe/PayGate integration, product management, and shopping cart functionality.</p>
+      <div class="tech-stack">
+        <span>Vue.js</span>
+        <span>Firebase</span>
+        <span>Stripe API</span>
+      </div>
+      <a href="#" class="view-btn">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Project Card 4: Custom CMS -->
+  <div class="project-card">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B1FA2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9C27B0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad4)" rx="12"/>
+  
+  <!-- CMS Interface -->
+  <rect x="60" y="50" width="280" height="200" fill="#fff" rx="8" filter="url(#shadow)"/>
+  <rect x="80" y="70" width="240" height="30" fill="#E1BEE7" rx="4"/>
+  <rect x="80" y="120" width="240" height="100" fill="#F3E5F5" rx="4"/>
+  <rect x="80" y="230" width="100" height="30" fill="#7B1FA2" rx="4"/>
+  <rect x="200" y="230" width="120" height="30" fill="#9C27B0" rx="4"/>
+  <path d="M100 140 L220 140 L220 160 L100 160 Z" fill="#9C27B0"/>
+</svg>
+    <div class="card-content">
+      <h3>Content Management System</h3>
+      <p>Admin-friendly CMS with CRUD operations, rich text editing, and role-based access control.</p>
+      <div class="tech-stack">
+        <span>Python/Django</span>
+        <span>PostgreSQL</span>
+        <span>REST API</span>
+      </div>
+      <a href="#" class="view-btn">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Project Card 5: Data Dashboard -->
+  <div class="project-card">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0097A7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00BCD4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad5)" rx="12"/>
+  
+  <!-- Dashboard Elements -->
+  <rect x="50" y="60" width="300" height="180" fill="#fff" rx="8" filter="url(#shadow)"/>
+  <rect x="70" y="180" width="80" height="60" fill="#80DEEA" rx="4"/>
+  <rect x="170" y="140" width="80" height="100" fill="#4DD0E1" rx="4"/>
+  <rect x="270" y="100" width="80" height="140" fill="#00BCD4" rx="4"/>
+  <path d="M80 100 L120 80 L160 120 L200 90" stroke="#0097A7" stroke-width="2" fill="none"/>
+  <circle cx="240" cy="110" r="8" fill="#0097A7"/>
+</svg>
+    <div class="card-content">
+      <h3>Interactive Data Dashboard</h3>
+      <p>Real-time analytics dashboard with dynamic visualizations for sales metrics and user behavior.</p>
+      <div class="tech-stack">
+        <span>React</span>
+        <span>D3.js</span>
+        <span>WebSocket</span>
+      </div>
+      <a href="#" class="view-btn">View Project →</a>
+    </div>
+  </div>
+</div>
             </section>
         </div>
     </main>
