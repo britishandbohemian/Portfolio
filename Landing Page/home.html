@@ -12,6 +12,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="ai-assistant-container">
+        <div class="ai-assistant collapsed" id="aiAssistant">
+            <div class="ai-avatar">
+                <img src="https://api.dicebear.com/6.x/bottts/svg?seed=finance" alt="AI Assistant">
+            </div>
+            <div class="ai-search">
+                <input type="text" placeholder="Ask me anything..." id="aiInput">
+                <button class="ai-send">
+                    <span class="material-symbols-rounded">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <main class="main-content">
         <div class="content-wrapper">
             <h1>Welcome Back</h1>
@@ -70,6 +84,24 @@
         function updateThemeIcon(theme) {
             themeIcon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
         }
+        
+        // AI Assistant Toggle
+        const aiAssistant = document.getElementById('aiAssistant');
+        const aiAvatar = document.querySelector('.ai-avatar');
+        
+        aiAvatar.addEventListener('click', () => {
+            aiAssistant.classList.toggle('collapsed');
+            if (!aiAssistant.classList.contains('collapsed')) {
+                document.getElementById('aiInput').focus();
+            }
+        });
+        
+        // Close assistant when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!aiAssistant.contains(event.target)) {
+                aiAssistant.classList.add('collapsed');
+            }
+        });
     </script>
 </body>
 </html>
