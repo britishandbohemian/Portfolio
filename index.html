@@ -50,6 +50,7 @@
         .page-content {
             min-height: 100vh;
             position: relative;
+            padding-bottom: 80px; /* Space for bottom menu */
         }
 
         /* Theme Toggle */
@@ -285,7 +286,47 @@
             }
         }
 
-        /* Maintain aspect ratio for devices */
+        /* Bottom Menu Styles */
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--background);
+    border-top: 2px solid var(--accent-color);
+    padding: 1rem 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.menu-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-link:hover {
+    background: var(--accent-color);
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .bottom-menu {
+        gap: 1rem;
+        padding: 0.8rem 0;
+    }
+    .menu-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Maintain aspect ratio for devices */
         [data-orientation="portrait"] .tablet-mockup {
             width: min(600px, 90vw);
             height: min(800px, 80vh);

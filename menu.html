@@ -7,15 +7,21 @@
     <title>Navigation Menu</title>
     <style>
         :root[data-theme="light"] {
-            --accent-color: #ff0000;
+            --accent-color: #A9A9A9;
             --text-light: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.15);
+            --menu-bg: #ffffff;
+            --menu-text: #000000;
+            --plus-button-bg: #A4C639;
         }
 
         :root[data-theme="dark"] {
-            --accent-color: #ff0000;
+            --accent-color: #696969;
             --text-light: #000000;
             --shadow-color: rgba(255, 255, 255, 0.15);
+            --menu-bg: #000000;
+            --menu-text: #ffffff;
+            --plus-button-bg: #A4C639;
         }
 
         /* Navigation Menu */
@@ -25,16 +31,17 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
+            align-items: center;
             gap: 20px;
-            background: var(--accent-color);
+            background: var(--menu-bg);
             padding: 12px 24px;
-            border-radius: 10px;
+            border-radius: 50px;
             box-shadow: 0 4px 12px var(--shadow-color);
             z-index: 1000;
         }
 
         .menu-link {
-            color: var(--text-light);
+            color: var(--menu-text);
             opacity: 0.7;
             transition: opacity 0.3s ease;
             display: flex;

@@ -93,4 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize device detection
   detectDevice();
   window.addEventListener('resize', detectDevice);
+
+  // Load menu component
+  fetch('menu.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('component-container').innerHTML = html;
+    });
+
+  // Add existing shared functions here
 });
