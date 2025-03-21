@@ -1,469 +1,82 @@
-<!DOCTYPE HTML>
-<html lang="en" data-theme="light">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="ico.png" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Software Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-
+    <title>Software Portfolio - Redirecting...</title>
+    <meta http-equiv="refresh" content="0;url=pages/index.html">
     <style>
-        /* Theme Variables */
-:root[data-theme="light"] {
-    --primary-color: #000000; /* Black */
-    --accent-color: #A9A9A9; /* Dark Gray */
-    --background: #ffffff; /* White */
-    --text-dark: #000000; /* Black */
-    --text-light: #ffffff; /* White */
-    --shadow-color: rgba(0, 0, 0, 0.15); /* Light shadow */
-    --device-border: #000000; /* Black */
-}
-
-:root[data-theme="dark"] {
-    --primary-color: #ffffff; /* White */
-    --accent-color: #696969; /* Dim Gray */
-    --background: #000000; /* Black */
-    --text-dark: #ffffff; /* White */
-    --text-light: #000000; /* Black */
-    --shadow-color: rgba(255, 255, 255, 0.15); /* Dark shadow */
-    --device-border: #ffffff; /* White */
-}
-
-
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Page Content */
-        .page-content {
-            min-height: 100vh;
-            position: relative;
-            padding-bottom: 80px; /* Space for bottom menu */
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            color: var(--text-dark);
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 500;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary-color);
-            color: var(--background);
-        }
-
-        /* Custom Cursor */
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent-color);
-            /* Red */
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.7;
-            transform-origin: center;
-            mix-blend-mode: difference;
-            transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
-        }
-
-        .custom-cursor.hover {
-            transform: scale(1.5);
-            opacity: 0.9;
-        }
-
-        /* Main Container */
-        .main-container {
+            background-color: #ffffff;
+            color: #000000;
             display: flex;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Content Wrapper */
-        .content-wrapper {
-            display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        /* Text Content */
-        .text-content {
-            flex: 1;
-            max-width: 500px;
-            z-index: 2;
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn 0.8s ease forwards;
-        }
-
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.1;
+            height: 100vh;
             margin: 0;
-            animation: fadeUp 0.8s ease forwards 0.3s;
-            opacity: 0;
-            color: var(--text-dark);
+            padding: 0;
+            text-align: center;
         }
-
-        .subtitle {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            color: var(--accent-color);
-            /* Red */
-            margin: 1rem 0;
-            animation: fadeUp 0.8s ease forwards 0.5s;
-            opacity: 0;
+        
+        .redirect-message {
+            max-width: 600px;
+            padding: 2rem;
         }
-
-        /* Device Mockups */
-        .device-showcase {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            opacity: 0;
-            transform: translateX(20px);
-            animation: slideIn 0.8s ease forwards 0.2s;
-            max-width: 100%;
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
-
-        .device {
-            background: var(--background);
-            border-radius: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            display: none;
-            border: 12px solid var(--device-border);
-            max-width: 100%;
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
-
-        .phone-mockup {
-            width: min(300px, 90vw);
-            height: min(600px, 80vh);
-        }
-
-        .tablet-mockup {
-            width: min(800px, 90vw);
-            height: min(600px, 70vh);
-        }
-
-        .desktop-mockup {
-            width: min(1000px, 90vw);
-            height: min(600px, 70vh);
-            border-radius: 20px;
-        }
-
-        .screen-content {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: var(--background);
-        }
-
-        /* Buttons */
-        .cta-container {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUp 0.8s ease forwards 0.7s;
-        }
-
-        .cta-button {
-            padding: 1rem 2rem;
-            background: var(--accent-color);
-            /* Red */
-            color: var(--text-light);
-            /* White */
+        
+        a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #000000;
+            color: #ffffff;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 500;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
-
-        .cta-button:hover {
+        
+        a:hover {
+            background-color: #A9A9A9;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-            opacity: 0.9;
         }
-
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            /* Red */
-            color: var(--text-dark);
-            /* Black in light mode, White in dark mode */
-        }
-
-
-        /* Animations */
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
+        
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
+                color: #ffffff;
             }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            
+            a {
+                background-color: #ffffff;
+                color: #000000;
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            a:hover {
+                background-color: #696969;
             }
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .content-wrapper {
-                flex-direction: column;
-                text-align: center;
-                padding: 4rem 1rem;
-            }
-
-            .text-content {
-                max-width: 100%;
-            }
-
-            .cta-container {
-                justify-content: center;
-            }
-
-            .menu-container {
-                padding: 0.6rem 1rem;
-                gap: 1.5rem;
-            }
-
-            .menu-link svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            .theme-toggle {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.6rem 1rem;
-            }
-        }
-
-        /* Bottom Menu Styles */
-.bottom-menu {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--background);
-    border-top: 2px solid var(--accent-color);
-    padding: 1rem 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.menu-link {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.menu-link:hover {
-    background: var(--accent-color);
-    color: var(--text-light);
-}
-
-@media (max-width: 768px) {
-    .bottom-menu {
-        gap: 1rem;
-        padding: 0.8rem 0;
-    }
-    .menu-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
-}
-
-/* Maintain aspect ratio for devices */
-        [data-orientation="portrait"] .tablet-mockup {
-            width: min(600px, 90vw);
-            height: min(800px, 80vh);
-        }
-
-        [data-orientation="landscape"] .tablet-mockup {
-            width: min(800px, 90vw);
-            height: min(600px, 70vh);
         }
     </style>
 </head>
-
-<body class="page-content">
-    <button class="theme-toggle" aria-label="Toggle theme">
-        <span class="theme-toggle-text">Theme</span>
-    </button>
-
-    <div class="custom-cursor"></div>
-
-
-
-    <div class="main-container">
-        <div class="content-wrapper">
-            <div class="text-content">
-                <h1 class="title">PORTFOLIO</h1>
-                <h2 class="subtitle">Software Developer</h2>
-                <div class="cta-container">
-                    <a href="projects.html" class="cta-button">View Projects</a>
-                    <a href="about.html" class="cta-button secondary">About Me</a>
-                </div>
-            </div>
-
-            <div class="device-showcase">
-                <div class="device phone-mockup">
-                    <div class="volume-buttons"></div>
-                    <div class="power-button"></div>
-                    <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="device tablet-mockup">
-                    <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="device desktop-mockup">
-                    <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
-                </div>
-            </div>
-
-        </div>
+<body>
+    <div class="redirect-message">
+        <h1>Redirecting to Portfolio...</h1>
+        <p>If you are not automatically redirected, please click the button below:</p>
+        <a href="pages/index.html">Go to Portfolio</a>
     </div>
-
-    <div id="component-container"></div>
-
-
-
-    <script src="shared.js"></script>
-
     <script>
-        // Previous script content remains
-
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('component-container').innerHTML = html;
-            })
-            .catch(error => console.error('Error loading component:', error));
-        // Device detection and orientation handling
-        function detectDevice() {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const orientation = width > height ? 'landscape' : 'portrait';
-
-            document.body.setAttribute('data-orientation', orientation);
-
-            const devices = document.querySelectorAll('.device');
-            devices.forEach(device => device.style.display = 'none');
-
-            if (width < 768) {
-                document.querySelector('.phone-mockup').style.display = 'block';
-            } else if (width < 1200) {
-                document.querySelector('.tablet-mockup').style.display = 'block';
-            } else {
-                document.querySelector('.desktop-mockup').style.display = 'block';
-            }
-        }
-
-        // Theme toggling
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Initialize theme from localStorage
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-        }
-
-        // Event Listeners
-        window.addEventListener('load', () => {
-            detectDevice();
-            initTheme();
-        });
-
-        window.addEventListener('resize', detectDevice);
-        document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
-
-        // Menu active state handling
-        function setActiveMenuItem() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const menuLinks = document.querySelectorAll('.menu-link');
-
-            menuLinks.forEach(link => {
-                const linkPage = link.getAttribute('href').split('/').pop();
-                if (linkPage === currentPage) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-
-        // Initialize menu state
-        window.addEventListener('load', () => {
-            detectDevice();
-            initTheme();
-            setActiveMenuItem();
-        });
-
-        // Update menu state on navigation
-        window.addEventListener('popstate', setActiveMenuItem);
-
-        // Previous event listeners remain
+        // JavaScript redirect as a fallback
+        window.location.href = "pages/index.html";
     </script>
 </body>
-
 </html>
