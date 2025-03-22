@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navigation Menu</title>
     <style>
+        <link rel="stylesheet" href="../assets/css/shared.css">
+<style>
         :root[data-theme="light"] {
             --accent-color: #A9A9A9;
+            --accent-color-rgb: 169, 169, 169;
             --text-light: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.15);
             --menu-bg: #ffffff;
@@ -18,6 +21,7 @@
 
         :root[data-theme="dark"] {
             --accent-color: #696969;
+            --accent-color-rgb: 105, 105, 105;
             --text-light: #000000;
             --shadow-color: rgba(255, 255, 255, 0.15);
             --menu-bg: #000000;
@@ -45,28 +49,138 @@
         .menu-link {
             color: var(--menu-text);
             opacity: 0.7;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            padding: 8px;
+            border-radius: 50%;
+        }
+        
+        .menu-link::after {
+            content: attr(aria-label);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
         }
 
         .menu-link:hover,
         .menu-link.active {
             opacity: 1;
             color: var(--accent-color);
+            transform: scale(1.2);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            background-color: rgba(var(--accent-color-rgb, 169, 169, 169), 0.1);
+            z-index: 10;
+        }
+        
+        .menu-link:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            bottom: -35px;
         }
 
         .menu-link svg {
             width: 24px;
             height: 24px;
             fill: none;
-            stroke: #000000; /* Changed to black */
+            stroke: var(--menu-text); /* Use theme variable instead of hardcoded color */
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-link:hover svg,
+        .menu-link.active svg {
+            stroke: var(--accent-color);
+        }
+
+        /* Chat Input Container Styles */
+        .chat-input-container {
+            position: fixed;
+            bottom: 80px; /* Position above the menu */
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--menu-bg);
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            z-index: 999;
+            display: none; /* Initially hidden */
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(20px);
+            width: auto; /* Allow container to size based on content */
+            min-width: 280px; /* Ensure minimum width */
+        }
+        
+        .chat-input-container.active {
+            display: flex; /* Changed to flex for better alignment */
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .chat-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid var(--accent-color);
+            padding: 8px 5px;
+            color: var(--menu-text);
+            width: 250px;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .chat-input::placeholder {
+            color: var(--menu-text);
+            opacity: 0.7;
+        }
+        
+        .chat-send-btn {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-send-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-send-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-light);
+            fill: none;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .menu-container {
@@ -77,6 +191,10 @@
             .menu-link svg {
                 width: 20px;
                 height: 20px;
+            }
+            
+            .chat-input {
+                width: 180px;
             }
         }
     </style>
@@ -128,7 +246,10 @@
     </div>
 
     <script>
-        window.addEventListener('load', setActiveMenuItem);
+        window.addEventListener('load', () => {
+            setActiveMenuItem();
+            setupChatToggle();
+        });
         window.addEventListener('popstate', setActiveMenuItem);
 
         function setActiveMenuItem() {
@@ -141,6 +262,51 @@
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
+                }
+            });
+        }
+        
+        function setupChatToggle() {
+            const chatToggle = document.querySelector('.chat-toggle');
+            const chatInputContainer = document.querySelector('.chat-input-container');
+            const chatInput = document.querySelector('.chat-input');
+            const chatSendBtn = document.querySelector('.chat-send-btn');
+            
+            // Toggle chat input when chat icon is clicked
+            chatToggle.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                chatInputContainer.classList.toggle('active');
+                
+                // If container becomes active, focus the input field
+                if (chatInputContainer.classList.contains('active')) {
+                    setTimeout(() => chatInput.focus(), 100); // Reduced delay to ensure faster focus
+                }
+            });
+            
+            // Close chat input when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!chatInputContainer.contains(e.target) && 
+                    !chatToggle.contains(e.target) && 
+                    chatInputContainer.classList.contains('active')) {
+                    chatInputContainer.classList.remove('active');
+                }
+            });
+            
+            // Handle send button click
+            chatSendBtn.addEventListener('click', () => {
+                if (chatInput.value.trim() !== '') {
+                    // Here you would handle sending the message
+                    console.log('Message sent:', chatInput.value);
+                    chatInput.value = '';
+                }
+            });
+            
+            // Handle Enter key press
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+                    // Here you would handle sending the message
+                    console.log('Message sent:', chatInput.value);
+                    chatInput.value = '';
                 }
             });
         }

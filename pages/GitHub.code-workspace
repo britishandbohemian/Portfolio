@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "GitHub",
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "'Jet Brains Mono'"
+	}
+}

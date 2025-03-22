@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="../assets/css/shared.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: var(--menu-bg);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+            transition: all 0.3s ease;
+        }
+
+        .bot-message {
+            background: var(--message-bg);
+            margin-right: auto;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .user-message {
+            background: var(--user-message-bg);
+            color: var(--text-light);
+            margin-left: auto;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: var(--menu-bg);
+            border-radius: 25px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            background: var(--chat-bg);
+            color: var(--menu-text);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent-color);
+            transform: scale(1.02);
+        }
+
+        .send-button {
+            background: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .send-button:hover {
+            transform: scale(1.1);
+            background: var(--plus-button-bg);
+        }
+
+        .send-button svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 10px;
+                height: calc(100vh - 120px);
+            }
+
+            .message {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+            <button class="send-button" id="sendButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            const sendButton = document.getElementById('sendButton');
+
+            function addMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+                messageDiv.textContent = message;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function handleUserMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // Simulate bot response (replace with actual chatbot logic)
+                    setTimeout(() => {
+                        const botResponse = "I'm a demo chatbot. This is a placeholder response. In a real implementation, this would be connected to a chatbot backend.";
+                        addMessage(botResponse);
+                    }, 1000);
+                }
+            }
+
+            sendButton.addEventListener('click', handleUserMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleUserMessage();
+                }
+            });
+        });
+    </script>
+
+    <!-- Include the menu component -->
+    <iframe src="menu.html" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 100px; border: none; background: transparent; pointer-events: none; z-index: 1000;">
+        <p>Your browser does not support iframes.</p>
+    </iframe>
+    <script>
+        // Allow pointer events only on the menu container
+        window.addEventListener('load', () => {
+            const iframe = document.querySelector('iframe');
+            iframe.onload = () => {
+                const menuContainer = iframe.contentDocument.querySelector('.menu-container');
+                if (menuContainer) {
+                    menuContainer.style.pointerEvents = 'auto';
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

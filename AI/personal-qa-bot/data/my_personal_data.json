@@ -1,0 +1,12 @@
+[
+  {"question": "Where was I born?", "answer": "I was born in [your birthplace]."},
+  {"question": "What are my hobbies?", "answer": "My hobbies include [list your hobbies]."},
+  {"question": "What's my favorite food?", "answer": "My favorite food is [your favorite food]."},
+  {"question": "What did I study in school?", "answer": "I studied [your field of study]."},
+  {"question": "Where do I work?", "answer": "I work at [your workplace/occupation]."},
+  {"question": "Do I have any pets?", "answer": "I have [your pets or 'no pets']."},
+  {"question": "What's my favorite movie?", "answer": "My favorite movie is [your favorite movie]."},
+  {"question": "What music do I listen to?", "answer": "I listen to [your music preferences]."},
+  {"question": "What languages do I speak?", "answer": "I speak [languages you speak]."},
+  {"question": "Where have I traveled?", "answer": "I have traveled to [places you've visited]."}
+]

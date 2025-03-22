@@ -6,45 +6,13 @@
     <link rel="shortcut icon" href="../assets/images/ico.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Software Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
-    <style>
-        /* Theme Variables */
-:root[data-theme="light"] {
-    --primary-color: #000000; /* Black */
-    --accent-color: #A9A9A9; /* Dark Gray */
-    --background: #ffffff; /* White */
-    --text-dark: #000000; /* Black */
-    --text-light: #ffffff; /* White */
-    --shadow-color: rgba(0, 0, 0, 0.15); /* Light shadow */
-    --device-border: #000000; /* Black */
-}
-
-:root[data-theme="dark"] {
-    --primary-color: #ffffff; /* White */
-    --accent-color: #696969; /* Dim Gray */
-    --background: #000000; /* Black */
-    --text-dark: #ffffff; /* White */
-    --text-light: #000000; /* Black */
-    --shadow-color: rgba(255, 255, 255, 0.15); /* Dark shadow */
-    --device-border: #ffffff; /* White */
-}
-
-
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
+    <link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+sk-463eea4a5088438fba554c0ff3dbd112        
+        
 
         /* Page Content */
         .page-content {
@@ -110,9 +78,10 @@
         /* Content Wrapper */
         .content-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
+            justify-content: center;
+            gap: 3rem;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
@@ -121,31 +90,38 @@
 
         /* Text Content */
         .text-content {
-            flex: 1;
-            max-width: 500px;
+            text-align: center;
+            max-width: 800px;
             z-index: 2;
             opacity: 0;
-            transform: translateX(-20px);
+            transform: translateY(-20px);
             animation: slideIn 0.8s ease forwards;
         }
 
         .title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(4rem, 8vw, 7rem);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1;
             margin: 0;
+            letter-spacing: var(--letter-spacing-wide);
             animation: fadeUp 0.8s ease forwards 0.3s;
             opacity: 0;
             color: var(--text-dark);
         }
 
         .subtitle {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
             color: var(--accent-color);
-            /* Red */
             margin: 1rem 0;
+            letter-spacing: 0.1em;
+            font-weight: var(--font-weight-semibold);
             animation: fadeUp 0.8s ease forwards 0.5s;
             opacity: 0;
+        }
+
+        /* Remove CTA container */
+        .cta-container {
+            display: none;
         }
 
         /* Device Mockups */
@@ -177,17 +153,95 @@
         .phone-mockup {
             width: min(300px, 90vw);
             height: min(600px, 80vh);
+            border-radius: 36px;
+            border-width: 10px;
+            position: relative;
+        }
+        
+        /* Phone notch */
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background-color: var(--device-border);
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            z-index: 10;
+        }
+        
+        /* Volume buttons */
+        .volume-buttons {
+            position: absolute;
+            left: -14px;
+            top: 100px;
+            width: 4px;
+            height: 60px;
+            background-color: var(--device-border);
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+            z-index: 5;
+        }
+        
+        /* Power button */
+        .power-button {
+            position: absolute;
+            right: -14px;
+            top: 120px;
+            width: 4px;
+            height: 40px;
+            background-color: var(--device-border);
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            z-index: 5;
         }
 
         .tablet-mockup {
             width: min(800px, 90vw);
             height: min(600px, 70vh);
+            border-radius: 20px;
+            border-width: 16px;
+            position: relative;
+        }
+        
+        /* Tablet camera */
+        .tablet-mockup::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 50%;
+            z-index: 10;
         }
 
         .desktop-mockup {
             width: min(1000px, 90vw);
             height: min(600px, 70vh);
-            border-radius: 20px;
+            border-radius: 10px;
+            border-width: 20px 20px 40px 20px;
+            position: relative;
+        }
+        
+        /* Desktop stand */
+        .desktop-mockup::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 20px;
+            background-color: var(--device-border);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 1;
         }
 
         .screen-content {
@@ -195,6 +249,29 @@
             height: 100%;
             object-fit: contain;
             background-color: var(--background);
+            border: none;
+            overflow: hidden;
+            /* Hide scrollbars for different browsers */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .screen-content::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Add subtle screen reflection */
+        .device::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            pointer-events: none;
+            z-index: 5;
         }
 
         /* Buttons */
@@ -366,15 +443,16 @@
                     <div class="volume-buttons"></div>
                     <div class="power-button"></div>
                     <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
+                        allowfullscreen scrolling="no"></iframe>
                 </div>
                 <div class="device tablet-mockup">
+                    <div class="volume-buttons"></div>
                     <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
+                        allowfullscreen scrolling="no"></iframe>
                 </div>
                 <div class="device desktop-mockup">
                     <iframe src="https://feed-frontend-inky.vercel.app" class="screen-content" frameborder="0"
-                        allowfullscreen></iframe>
+                        allowfullscreen scrolling="no"></iframe>
                 </div>
             </div>
 

@@ -20,7 +20,7 @@
 
 .project-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: var(--border-radius-large);
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -51,7 +51,7 @@
 .tech-stack span {
   background: #f5f5f5;
   padding: 0.3rem 0.8rem;
-  border-radius: 20px;
+  border-radius: var(--border-radius-pill);
   font-size: 0.9rem;
 }
 
@@ -60,10 +60,10 @@
   margin-top: 1rem;
   text-decoration: none;
   color: #2d3748;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   border: 2px solid #2d3748;
   padding: 0.5rem 1.5rem;
-  border-radius: 25px;
+  border-radius: var(--border-radius-pill);
   transition: all 0.3s ease;
 }
 
@@ -71,52 +71,8 @@
   background: #2d3748;
   color: white;
 }
-        /* Theme Variables */
-        :root[data-theme="light"] {
-            --primary-color: #000000;
-            /* Black */
-            --accent-color: #ff0000;
-            /* Red */
-            --background: #ffffff;
-            /* White */
-            --text-dark: #000000;
-            /* Black */
-            --text-light: #ffffff;
-            /* White */
-            --shadow-color: rgba(0, 0, 0, 0.15);
-            /* Light shadow */
-            --card-bg: #ffffff;
-            /* White */
-            --tag-bg: #f0f4f8;
-            /* Light gray */
-        }
-
-        :root[data-theme="dark"] {
-            --primary-color: #ffffff;
-            /* White */
-            --accent-color: #ff0000;
-            /* Red */
-            --background: #000000;
-            /* Black */
-            --text-dark: #ffffff;
-            /* White */
-            --text-light: #000000;
-            /* Black */
-            --shadow-color: rgba(255, 255, 255, 0.15);
-            /* Dark shadow */
-            --card-bg: #1a1a1a;
-            /* Dark gray */
-            --tag-bg: #333333;
-            /* Dark gray */
-        }
-
-        /* Base Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+        <link rel="stylesheet" href="../assets/css/shared.css">
+        <style>
 
         /* Page Content */
         .page-content {
@@ -191,7 +147,7 @@
         /* Project Card */
         .project-card {
             background-color: var(--card-bg);
-            border-radius: 12px;
+            border-radius: var(--border-radius-large);
             overflow: hidden;
             border: 1px solid var(--shadow-color);
             transition: transform 0.3s ease;
@@ -241,7 +197,7 @@
         .project-tag {
             background-color: var(--tag-bg);
             padding: 5px 10px;
-            border-radius: 12px;
+            border-radius: var(--border-radius-large);
             font-size: 0.875rem;
             color: var(--text-dark);
         }
@@ -462,15 +418,16 @@
         </div>
     </main>
 
-    <div id="component-container"></div>
+    <div id="menu-container"></div>
     <script src="shared.js"></script>
     <script>
-        fetch('menu.html')
+        fetch('/assets/html/menu-template.html')
             .then(response => response.text())
             .then(html => {
-                document.getElementById('component-container').innerHTML = html;
+                document.getElementById('menu-container').innerHTML = html;
             })
-            .catch(error => console.error('Error loading component:', error));
+            .catch(error => console.error('Error loading menu:', error));
+
         window.addEventListener('load', () => {
             setActiveMenuItem();
         });
